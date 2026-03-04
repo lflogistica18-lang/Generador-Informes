@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-primary-50 text-gray-800 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-primary-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded transition-colors duration-200 flex items-center justify-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-100 hover:bg-primary-200 text-primary-800 font-medium py-2 px-4 rounded transition-colors duration-200 flex items-center justify-center gap-2;
+  }
+
+  .btn-accent {
+    @apply bg-sanitas hover:bg-sanitas-dark text-white font-medium py-2 px-4 rounded shadow-sm hover:shadow transition-all duration-200 flex items-center justify-center gap-2;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-primary-200 p-6;
+  }
+
+  .input-field {
+    @apply w-full bg-primary-50 border border-primary-300 rounded px-3 py-2 text-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent transition-all;
+  }
+
+  .panel-header {
+    @apply bg-primary-800 text-primary-50 px-4 py-3 rounded-t-lg font-medium flex items-center justify-between;
+  }
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ECEFF1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #90A4AE;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #78909C;
+}
+
+/* ─── ESTILOS DE IMPRESIÓN DINÁMICA A4 (FLUJO CONTINUO) ─── */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body {
+    background: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .no-screen {
+    display: flex !important;
+  }
+
+  /* El contenedor crece según el contenido */
+  .a4-page-continuous {
+    width: 210mm;
+    padding: 30mm 15mm 20mm 15mm;
+    /* Márgenes internos para dejar espacio a header/footer fijos */
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background: white;
+    box-sizing: border-box;
+  }
+
+  /* Cabecera FIJA: Se repite en cada hoja física */
+  .page-header-print {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 210mm;
+    margin: 0 auto;
+    height: 25mm;
+    padding: 10mm 15mm 0 15mm;
+    background: white;
+    border-bottom: 2px solid #009688;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Pie de página FIJO: Se repite en cada hoja física */
+  .page-footer-print {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 210mm;
+    margin: 0 auto;
+    height: 15mm;
+    padding: 0 15mm 8mm 15mm;
+    background: white;
+    border-top: 1px solid #CBD5E1;
+    z-index: 1000;
+    box-sizing: border-box;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: #64748B;
+  }
+
+  /* Evitar saltos de página a mitad de un bloque importante */
+  .break-inside-avoid,
+  .photo-card-new,
+  .summary-text-print,
+  .chart-box,
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Forzar saltos de página antes de secciones mayores si se desea */
+  .page-break-before {
+    page-break-before: always;
+  }
+}
+
+/* Vista Previa Web (Simulación visual) */
+@media screen {
+  .print-preview-container {
+    background-color: #f0f4f8;
+    padding: 40px 0;
+    min-height: 100vh;
+  }
+
+  .no-screen {
+    display: none !important;
+  }
+
+  .a4-page-continuous {
+    background: white;
+    width: 210mm;
+    min-height: 297mm;
+    /* Mínimo una página */
+    padding: 20mm 15mm;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  /* En pantalla no fijamos el header/footer para que se comporten como portada y cierre */
+  .page-header-print {
+    border-bottom: 2px solid #009688;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+  }
+
+  .page-footer-print {
+    border-top: 1px solid #CBD5E1;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 9pt;
+    color: #94A3B8;
+  }
+}
+
+/* Estilos de Componentes del Reporte */
+.photo-card-new {
+  border: 1px solid #E2E8F0;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-container {
+  height: 160px;
+  background-color: #F1F5F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chart-box {
+  background-color: #fff;
+  border: 1px solid #F1F5F9;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.section-header-print {
+  background: linear-gradient(90deg, #00796B, #004D40);
+  color: white;
+  padding: 10px 16px;
+  font-size: 14pt;
+  font-weight: 800;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+}
+
+.summary-text-print {
+  background-color: #F8FAFC;
+  border-left: 5px solid #009688;
+  padding: 15px;
+  font-size: 10.5pt;
+  line-height: 1.6;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  white-space: pre-wrap;
+  text-align: justify;
+  color: #334155;
+}
+
+.page-content-print {
+  width: 100%;
+}
+
+.report-section {
+  position: relative;
+  page-break-inside: auto;
+}
+
+.report-content-fluid {
+  width: 100%;
+}

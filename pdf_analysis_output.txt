@@ -1,0 +1,1326 @@
+﻿
+================================================================================
+ANALIZANDO CONFORME: Conforme124931.pdf
+================================================================================
+P├íginas: 2
+
+--- P├ígina 1 ---
+ 
+ SANITAS AMBIENTAL
+ 
+Empresa Certificada ISO
+9001 - 14001 - 45001
+CALSA - Planta 4
+Av. Pres. Ra├║l Alfons├¡n 3145, B1825 Lan├║s, Provincia de Buenos Aires, Argentina
+INFORME CONTROL DE PLAGAS - TRACK ID #124931
+DETALLE DEL SERVICIO
+Tipo:
+Desinsectaci├│n de Rastreros
+Modo:
+Preventiva
+Maquinarias:
+Bomba Manual
+Producto:
+Tacazo
+Avistamiento:
+No
+Comentarios:
+Aspersi├│n perimetral en contornos de oficina y planta, se
+utiliza la cantidad de 3 litros de diluci├│n. Tacazo 5 ml x lt.
+Tipo:
+Desinsectaci├│n de Mosquitos
+Modo:
+Preventiva
+Producto:
+Placa de Pegamento para UV
+Avistamiento:
+No
+Comentarios:
+Se renuevan placas UV, 8 en total. Trampa UV n├║mero 5
+bloqueada por obras.
+Tipo:
+Desratizaci├│n
+Modo:
+Mip
+Consumo:
+12
+Avistamiento:
+0
+Reposici├│n:
+12
+Capturas:
+0
+Observaciones:
+Se lleva a cabo la limpieza y reposici├│n de cebos en
+dispositivos externos ,parte de los mismos no pudieron ser
+monitoreados dado al bloqueo por acopios o el vallado por
+obras dentro de planta
+www.sanitasambiental.com.ar
+1
+ 
+Fecha: 23/01/2026
+Nombre: Denis Manuel Bola├▒os Herrera 
+Ingreso: 11:13
+Egreso: 15:16
+
+
+[IM├üGENES en p├ígina 1: 7]
+
+--- P├ígina 2 ---
+CONFORME DE SERVICIO
+Nombre: Yuliana cusato
+Apellido:
+Dni: 36575212
+Puesto: Encargado
+www.sanitasambiental.com.ar
+2
+
+
+[IM├üGENES en p├ígina 2: 7]
+
+================================================================================
+ANALIZANDO CONFORME: Conforme126257-PLANTA 4 VISITA ADICIONAL PARA RETIRAR CAPTURA.pdf
+================================================================================
+P├íginas: 5
+
+--- P├ígina 1 ---
+ 
+ SANITAS AMBIENTAL
+ 
+Empresa Certificada ISO
+9001 - 14001 - 45001
+CALSA - Planta 4
+Av. Pres. Ra├║l Alfons├¡n 3145, B1825 Lan├║s, Provincia de Buenos Aires, Argentina
+INFORME CONTROL DE PLAGAS - TRACK ID #126257
+DETALLE DEL SERVICIO
+Tipo:
+Desinsectaci├│n de Rastreros
+Modo:
+No realizado
+Avistamiento:
+No
+Comentarios:
+No realizado.
+Tipo:
+Desinsectaci├│n de Mosquitos
+Modo:
+No realizado
+Avistamiento:
+No
+Comentarios:
+No realizado.
+Tipo:
+Desratizaci├│n
+Modo:
+Mip
+Consumo:
+0
+Avistamiento:
+0
+Reposici├│n:
+0
+Capturas:
+0
+Observaciones:
+Monitoreo de cebaderas en sector soldadura ( per├¡metro
+interno cebadera 1 a la 6) se retira roedor pegado en placa de
+pegamento sueltas.
+www.sanitasambiental.com.ar
+1
+ 
+Fecha: 14/01/2026
+Nombre: Diego Alejandro Gonzalez 
+Ingreso: 15:12
+Egreso: 15:36
+
+
+[IM├üGENES en p├ígina 1: 10]
+
+--- P├ígina 2 ---
+CONFORME DE SERVICIO
+Nombre: Lucas Garc├¡a
+Apellido:
+Dni: 40622953
+Puesto: Encargado
+www.sanitasambiental.com.ar
+2
+
+
+[IM├üGENES en p├ígina 2: 10]
+
+--- P├ígina 3 ---
+RELEVAMIENTOS
+Avistamiento
+Sector: Soldadura
+Se retira roedor pegado en placa suelta, se repone el insumo.
+www.sanitasambiental.com.ar
+3
+
+
+[IM├üGENES en p├ígina 3: 10]
+
+--- P├ígina 4 ---
+www.sanitasambiental.com.ar
+4
+
+
+[IM├üGENES en p├ígina 4: 10]
+
+--- P├ígina 5 ---
+www.sanitasambiental.com.ar
+5
+
+
+[IM├üGENES en p├ígina 5: 10]
+
+================================================================================
+ANALIZANDO INFORME DE REFERENCIA: Informe MIP - Mensual - Planta 4 -  Enero  2026.pdf
+================================================================================
+P├íginas: 6
+
+--- P├ígina 1 (primeros 2000 chars) ---
+INFORME MIP 
+Cliente: Compa├▒├¡a Argentina de levaduras SAIC                     Mes: Enero
+Direcci├│n: Av. Pres. Ra├║l Alfons├¡n 3145 - Lan├║s
+Control de Roedores
+ Sector: Planta 4
+Cantidad de Estaciones 
+Perimetro Externo: 41 Und
+Perimetro Interno: 34 Und
+Desv├¡os mes de Enero
+
+
+[IM├üGENES en p├ígina 1: 1]
+
+--- P├ígina 2 (primeros 2000 chars) ---
+Fecha
+Observaciones
+06/01
+Monitoreo de dispositivo: Se reponen cebos Consumo por hormigas En CB 
+01/04/10/11/25/39/41 Per├¡metro exterior, se aplica medida correctiva y se 
+aumenta dosis en dispositivos afectados. Se reponen insumos degradados.  
+Dispositivos restantes en buenas condiciones, no se registran capturas. 
+14/01
+Monitoreo de cebaderas en sector soldadura ( per├¡metro interno cebadera 1 a 
+la 6) se retira roedor pegado en placa de pegamento sueltas CB n┬║ 4 - 
+Referencia
+23/01
+Monitoreo de dispositivo: Se reponen cebos Consumo por hormigas En CB 
+04/08/10/11/12/24. Per├¡metro exterior, se aplica medida correctiva y se 
+aumenta dosis en dispositivos afectados. Se reponen insumos degradados.  
+Dispositivos restantes en buenas condiciones, no se registran capturas. 
+27/01
+Se lleva a cabo una inspecci├│n en sala de tierras dando recomendaciones de 
+exclusi├│n e higiene, tambi├®n se monitorean los dispositivos aleda├▒os a la zona 
+del avistamiento, se realiza reposici├│n por consumo en CB n┬¬ 4 Per├¡metro 
+Externo. 
+Registros de Consumos
+Registro de Capturas 
+Registros de Producto Utilizado
+Gel Tek Rodenticida 
+Placa de Pegamento Pega Rat
+
+
+[IM├üGENES en p├ígina 2: 2]
+
+--- P├ígina 3 (primeros 2000 chars) ---
+Estaciones con Desv├¡os
+Resumen de Tratamiento 
+Se reponen cebos y placas por degradados para adecuaci├│n de Estaciones de monitoreo en 
+interiores y exteriores.
+Se registran consumos superior a los umbrales de tolerancia. Se activa plan de acci├│n mediante 
+duplicado de dosis. 
+Se recomienda evitar la acumulaci├│n de materias primas en exteriores as├¡ como la remoci├│n 
+peri├│dica por perdidas de grasa para evitar disponibilidad de alimento para plagas potenciales. 
+Se recomienda revisar los acceso a interiores de taller de planta relevado en informes.  
+ 
+Se continuar├í con las tareas preventivas y correctivas a hasta el control del desvi├│. 
+
+
+[IM├üGENES en p├ígina 3: 1]
+
+--- P├ígina 4 (primeros 2000 chars) ---
+Control de Voladores
+ Cantidad de Trampas UV
+Per├¡metro Interno: 9 Und
+ 
+Fecha
+Observaciones
+06-01
+Remoci├│n y reposici├│n de placas de pegamento en equipos uv se 
+retiran (9) se instalan (9) - Se registra Equipo TUV04 - Fuera de 
+funcionamiento. 
+13-01
+Reposici├│n de LED en EQUIPO TUV09 por baja intensidad. Tambi├®n 
+se Renueva Placa UV del mismo. 
+23-01
+Remoci├│n y reposici├│n de placas de pegamento en equipos uv se 
+retiran (8) se instalan (8) - Se registra Equipo TUV05 - Bloqueado
+Moscas
+Mosca de la Fruta
+Plodia
+Carcoma
+TUV01
+TUV02
+TUV03
+TUV04
+TUV05
+TUV06
+TUV07
+TUV08
+TUV09
+0
+100
+200
+300
+400
+500
+600
+700
+Trampa
+Individuos
+8
+8
+4
+102
+5
+7
+68
+2
+2
+101
+7
+3
+12
+512
+6
+4
+2
+35
+
+
+--- P├ígina 5 (primeros 2000 chars) ---
+Resumen de Tratamiento 
+Durante el per├¡odo evaluado se realizaron recambios de placas de pegamento en trampas UV 
+los d├¡as  06/01 y el 23-01, estableciendo una frecuencia quincenal de reposici├│n. 
+Se registra adecuaci├│n de equipo TUV 04 ya funcional en recambio final.
+Equipo TUV 05 bloqueado en recambio de visita 23-01 Registro sin sumar de equipo. 
+Se nota incremento en las capturas en trampas en areas internas de trampa. Se vuelve a  
+reforzar las recomendaciones de higiene y medidas de exclusi├│n para evitar incrementos 
+sostenidos de capturas (Acceso e ingresos / Acumulaci├│n de agua , etc.) 
+Se continuar├í con el seguimiento de tendencias y los tratamientos preventivos. 
+Control de Insectos Rastreros
+Per├¡metro Externo:  
+Per├¡metro Interno:
+Fecha
+Producto
+Laboratorio
+Principio Activo
+Dosis
+Cant. 
+Aplicada
+Sectores Tratados
+06-01
+Tacazo
+BASF S.A 
+alfacipermetrina 
+3% + 
+flufenoxuron 3%
+5 ml x Litro 
+1lts / 
+Aspersion  focalizada en 
+per├¡metro externo de planta y 
+exterior de edificios .
+23-01
+Tacazo
+BASF S.A 
+alfacipermetrina 
+3% + 
+flufenoxuron 3%
+5 ml x Litro 
+3lts / 
+Aspersion  focalizada en 
+per├¡metro externo de planta y 
+exterior de edificios .
+Resumen de Tratamiento 
+Se realizaron aplicaciones programadas en el per├¡metro externo de la planta y edificios, con el 
+objetivo de mantener una barrera preventiva frente a plagas y reducir el riesgo de ingresos 
+hacia los sectores internos.  
+No se registraron desvios con insectos rastreros durante el mes. 
+Las intervenciones se llevaron a cabo de forma dirigida, cubriendo tanto ├íreas perimetrales 
+como zonas espec├¡ficas y accesos garantizando uniformidad y continuidad en la protecci├│n.
+
+
+--- P├ígina 6 (primeros 2000 chars) ---
+Conclusi├│n General
+Durante Enero los tratamientos perimetrales, controles de roedores y monitoreos de insectos 
+voladores se desarrollaron seg├║n lo planificado, manteniendo la cobertura preventiva en todos 
+los sectores. 
+Se registran un aumento de consumos superior a los  umbrales de tolerancia. Se registra 
+captura en interiores de taller/soldadura. Se vuelven a relevar las  condiciones de periferia en 
+cuanto al higiene y orden para evitar la atractancia y posible anidamiento de roedores. Se 
+relevan nuevamente condiciones edilicias y costumbres que permiten el ingreso de plagas a 
+interiores. 
+Se repuso tira led en Equipos UV 09 -  Se observo un incremento de capturas durante el mes, se 
+registraron condiciones a regularizar correspondientes a exclusiones e higiene para evitar el 
+ingreso y la proliferaci├│n de plagas en interiores de planta. 
+Se continuar├í con la frecuencia actual de servicios, reforzando medidas en sectores cr├¡ticos 
+seg├║n se requiera. 
+Todas las oportunidades de mejora, relevamientos mediante im├ígenes, as├¡ como las Hojas de 
+Seguridad (HDS) y Certificados de los productos utilizados, se encuentran disponibles en el 
+portal web
+
+
+================================================================================
+ANALIZANDO MIP: MIP_CALSA_-_Planta_4_2026-01-23.pdf
+================================================================================
+P├íginas: 7
+
+--- P├ígina 1 ---
+Resumen MIP - CALSA - Planta 4
+DIRECCI├ôN: AV. PRES. RA├ÜL ALFONS├ìN 3145, B1825 LAN├ÜS, PROVINCIA DE BUENOS AIRES, ARGENTINA
+FECHA: 23/01/2026
+TRABAJO ID: #124931
+Dashboard de Actividad MIP
+CONSUMOS
+12
+120 gr totales
+ 
+CAPTURAS
+0
+ 
+REPOSICIONES
+12
+Cebos: 120 gr | Placas: 0 un
+ 
+OPERARIOS
+1
+Productos Utilizados
+Gel Tek Rodenticida
+Comentarios
+Se lleva a cabo la limpieza y reposici├│n de cebos en dispositivos externos ,parte de los mismos no pudieron ser monitoreados dado al bloqueo por acopios o el vallado por obras dentro
+de planta
+
+
+--- P├ígina 2 ---
+Registros de Consumos MIP
+ID
+OPERARIO
+INSUMO
+PUNTO CONTROL
+CANTIDAD
+FECHA
+COMENTARIO
+232
+Denis Manuel
+Gel Tek Rodenticida
+CB004
+2
+23/01/2026
+-
+233
+Denis Manuel
+Gel Tek Rodenticida
+CB008
+2
+23/01/2026
+-
+234
+Denis Manuel
+Gel Tek Rodenticida
+CB010
+2
+23/01/2026
+-
+235
+Denis Manuel
+Gel Tek Rodenticida
+CB011
+2
+23/01/2026
+-
+236
+Denis Manuel
+Gel Tek Rodenticida
+CB012
+2
+23/01/2026
+-
+237
+Denis Manuel
+Gel Tek Rodenticida
+CB024
+2
+23/01/2026
+-
+Total Registros: 6 | Cebos: 120 gr | Placas: 0 un
+Registros de Capturas MIP
+No hay registros de capturas para este trabajo.
+
+
+--- P├ígina 3 ---
+Registros de Reposiciones MIP
+ID
+OPERARIO
+INSUMO
+TIPO
+PUNTO CONTROL
+CANTIDAD
+FECHA
+COMENTARIO
+2065
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB004
+2
+23/01/2026
+-
+2066
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB008
+2
+23/01/2026
+-
+2067
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB010
+2
+23/01/2026
+-
+2068
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB011
+2
+23/01/2026
+-
+2069
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB012
+2
+23/01/2026
+-
+2070
+Denis Manuel
+Gel Tek Rodenticida
+Consumo
+CB024
+2
+23/01/2026
+-
+Total Registros: 6 | Placas: 0 un | Cebos: 120 gr
+Resumen General de Tablas Auxiliares
+Total Registros: 12 | Cons. Cebos: 120 gr | Cons. Placas: 0 un | Repos. Placas: 0 un | Repos. Cebos: 120 gr | Capturas: 0
+
+
+--- P├ígina 4 ---
+Relevamiento Original MIP
+EXTERIORES
+SUBSECCI├ôN
+C├ôDIGO
+HERRAMIENTA
+ESTADO
+CONSUMOS
+CAPTURAS
+REPOS.
+TIPO REP.
+OPERARIO
+COMENTARIO
+Per├¡metro Externo
+CB001
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB002
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB003
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB004
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+CB005
+Cebadera CB
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB006
+Cebadera CB
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB007
+Cebadera CB
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB008
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+CB009
+Cebadera CB
+Bloqueada
+0
+0
+0
+-
+Denis Manuel
+-
+CB010
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+CB011
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+CB012
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+CB013
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB014
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB015
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB016
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB017
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB018
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB019
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB020
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB021
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB022
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB023
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB024
+Cebadera CB
+Activa
+2
+0
+2
+Consumo
+Denis Manuel
+-
+
+
+--- P├ígina 5 ---
+SUBSECCI├ôN
+C├ôDIGO
+HERRAMIENTA
+ESTADO
+CONSUMOS
+CAPTURAS
+REPOS.
+TIPO REP.
+OPERARIO
+COMENTARIO
+CB025
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB026
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB027
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB028
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB029
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB030
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB031
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB032
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB033
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB034
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB035
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB036
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB037
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB038
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB039
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB040
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB041
+Cebadera CB
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+Puntos: 41 | Consumos: 12 | Capturas: 0 | Reposiciones: 12
+INTERIORES
+SUBSECCI├ôN
+C├ôDIGO
+HERRAMIENTA
+ESTADO
+CONSUMOS
+CAPTURAS
+REPOS.
+TIPO REP.
+OPERARIO
+COMENTARIO
+Perimetro Interno
+CB001
+Cebadera PG
+Bloqueada
+0
+0
+0
+-
+Denis Manuel
+-
+CB002
+Cebadera PG
+Bloqueada
+0
+0
+0
+-
+Denis Manuel
+-
+CB003
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB004
+Cebadera PG
+Bloqueada
+0
+0
+0
+-
+Denis Manuel
+-
+CB005
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB006
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB007
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+
+
+--- P├ígina 6 ---
+SUBSECCI├ôN
+C├ôDIGO
+HERRAMIENTA
+ESTADO
+CONSUMOS
+CAPTURAS
+REPOS.
+TIPO REP.
+OPERARIO
+COMENTARIO
+CB008
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB009
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB010
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB011
+Cebadera PG
+Bloqueada
+0
+0
+0
+-
+Denis Manuel
+-
+CB012
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB013
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB014
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB015
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB016
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB017
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB018
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB019
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB020
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB021
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB022
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB023
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB024
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB025
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB026
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB027
+Cebadera PG
+No Relevado
+0
+0
+0
+-
+Denis Manuel
+-
+CB028
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB029
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB030
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB031
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB032
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB033
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+CB034
+Cebadera PG
+Sin Novedad
+0
+0
+0
+-
+Denis Manuel
+-
+Puntos: 34 | Consumos: 0 | Capturas: 0 | Reposiciones: 0
+Resumen de Relevamiento Original
+Esta tabla muestra los datos originales registrados por los operarios en campo, organizados por secciones y puntos de control espec├¡ficos.
+
+
+--- P├ígina 7 ---
+FIRMA DE CONFORMIDAD DEL TRABAJO
+Firmante:
+ Yuliana cusato 
+DNI:
+ 36575212
+Aclaraci├│n:
+ Encargado
+Fecha:
+ 23/01/2026 15:16
+Operario:
+ Denis Manuel Bola├▒os Herrera
+Firmado digitalmente
+Resumen ID: 6037 | Generado: 26/01/2026 13:51
+Informe generado el 19/02/2026 22:00
+
+
+--- TABLAS (pdfplumber) ---
+
+P├ígina 2: 1 tabla(s)
+  Tabla 1: 7 filas x 7 cols
+    ['ID', 'OPERARIO', 'INSUMO', 'PUNTO CONTROL', 'CANTIDAD', 'FECHA', 'COMENTARIO']
+    ['232', 'Denis Manuel', 'Gel Tek Rodenticida', 'CB004', '2', '23/01/2026', '-']
+    ['233', 'Denis Manuel', 'Gel Tek Rodenticida', 'CB008', '2', '23/01/2026', '-']
+    ['234', 'Denis Manuel', 'Gel Tek Rodenticida', 'CB010', '2', '23/01/2026', '-']
+    ['235', 'Denis Manuel', 'Gel Tek Rodenticida', 'CB011', '2', '23/01/2026', '-']
+    ... (2 filas m├ís)
+
+P├ígina 3: 1 tabla(s)
+  Tabla 1: 7 filas x 8 cols
+    ['ID', 'OPERARIO', 'INSUMO', 'TIPO', 'PUNTO CONTROL', 'CANTIDAD', 'FECHA', 'COMENTARIO']
+    ['2065', 'Denis Manuel', 'Gel Tek Rodenticida', 'Consumo', 'CB004', '2', '23/01/2026', '-']
+    ['2066', 'Denis Manuel', 'Gel Tek Rodenticida', 'Consumo', 'CB008', '2', '23/01/2026', '-']
+    ['2067', 'Denis Manuel', 'Gel Tek Rodenticida', 'Consumo', 'CB010', '2', '23/01/2026', '-']
+    ['2068', 'Denis Manuel', 'Gel Tek Rodenticida', 'Consumo', 'CB011', '2', '23/01/2026', '-']
+    ... (2 filas m├ís)
+
+P├ígina 4: 1 tabla(s)
+  Tabla 1: 49 filas x 10 cols
+    ['SUBSECCI├ôN', 'C├ôDIGO', 'HERRAMIENTA', 'ESTADO', 'CONSUMOS', 'CAPTURAS', 'REPOS.', 'TIPO REP.', 'OPERARIO', 'COMENTARIO']
+    ['Per├¡metro Externo', 'CB001', 'Cebadera CB', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', '-']
+    [None, None, None, 'Sin Novedad', None, None, None, None, None, None]
+    [None, 'CB002', 'Cebadera CB', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', '-']
+    [None, None, None, 'Sin Novedad', None, None, None, None, None, None]
+    ... (44 filas m├ís)
+
+P├ígina 5: 2 tabla(s)
+  Tabla 1: 35 filas x 10 cols
+    ['SUBSECCI├ôN', 'C├ôDIGO', 'HERRAMIENTA', 'ESTADO', 'CONSUMOS', 'CAPTURAS', 'REPOS.', 'TIPO REP.', 'OPERARIO', 'COMENTARIO']
+    ['CB025', 'Cebadera CB', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', '-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-', None]
+    [None, None, 'Sin Novedad', None, None, None, None, None, None, None]
+    ['CB026', 'Cebadera CB', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', '-', None]
+    [None, None, 'Sin Novedad', None, None, None, None, None, None, None]
+    ... (30 filas m├ís)
+  Tabla 2: 15 filas x 10 cols
+    ['SUBSECCI├ôN', 'C├ôDIGO', 'HERRAMIENTA', 'ESTADO', 'CONSUMOS', 'CAPTURAS', 'REPOS.', 'TIPO REP.', 'OPERARIO', 'COMENTARIO']
+    ['Perimetro Interno', 'CB001', 'Cebadera PG', 'Bloqueada', '0', '0', '0', '-', 'Denis Manuel', '-']
+    [None, None, None, 'Bloqueada', None, None, None, None, None, None]
+    [None, 'CB002', 'Cebadera PG', 'Bloqueada', '0', '0', '0', '-', 'Denis Manuel', '-']
+    [None, None, None, 'Bloqueada', None, None, None, None, None, None]
+    ... (10 filas m├ís)
+
+P├ígina 6: 1 tabla(s)
+  Tabla 1: 55 filas x 10 cols
+    ['SUBSECCI├ôN', 'C├ôDIGO', 'HERRAMIENTA', 'ESTADO', 'CONSUMOS', 'CAPTURAS', 'REPOS.', 'TIPO REP.', 'OPERARIO', 'COMENTARIO']
+    ['CB008', 'Cebadera PG', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', '-', None]
+    [None, None, 'Sin Novedad', None, None, None, None, None, None, None]
+    ['CB009', 'Cebadera PG', 'Sin Novedad', '0', '0', '0', '-', 'Denis Manuel', None, None]
+    [None, None, 'Sin Novedad', None, None, None, None, None, None, None]
+    ... (50 filas m├ís)

@@ -1,0 +1,19 @@
+Iniciando reproducción del error...
+MIPs encontrados: 2
+Conformes seleccionados: 6
+Parseando MIP: mip_calsa_-_planta_4_2026-01-06-69668701e3fc1.pdf
+  -> Total Consumos: 14
+  -> Gramos Consumos: 140.0
+Parseando MIP: mip_calsa_-_planta_4_2026-01-23-697775a075807.pdf
+  -> Total Consumos: 12
+  -> Gramos Consumos: 120.0
+Parseando Conforme: 126219.pdf
+Parseando Conforme: 124927.pdf
+Parseando Conforme: 126502.pdf
+Parseando Conforme: 126257.pdf
+Parseando Conforme: 127215.pdf
+Parseando Conforme: 124931.pdf
+Preparando InformeData...
+Consolidando datos...
+Generando PDF...
+PDF generado exitosamente en: /home/lucas/Generador-Informes/outputs/Informe_MIP_Calsa_Planta_4_Enero_2026_20260220_015932.pdf
