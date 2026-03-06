@@ -40,10 +40,10 @@ const ReviewPage = () => {
                     <p className="text-primary-600">Verifica los datos de las visitas y completa los campos faltantes.</p>
                 </div>
                 <button
-                    onClick={() => setStep('voladores')}
+                    onClick={() => setStep('roedores')}
                     className="btn-primary"
                 >
-                    Siguiente: Voladores <ChevronRight size={18} />
+                    Siguiente: Roedores <ChevronRight size={18} />
                 </button>
             </div>
 

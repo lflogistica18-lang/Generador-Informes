@@ -35,7 +35,7 @@ const VoladoresPage = () => {
                 return { ...c, capturas: nuevasCapturas };
             });
             setCapturas(capturasActualizadas);
-            
+
             // Combinar especies guardadas con las fijas
             const todasEspecies = Array.from(new Set([...ESPECIES_FIJAS, ...(informeData.especies_voladores || [])]));
             setEspecies(todasEspecies);
@@ -106,7 +106,7 @@ const VoladoresPage = () => {
                     <p className="text-primary-600">Ingresa el conteo de individuos por trampa UV y especie.</p>
                 </div>
                 <div className="flex gap-3">
-                    <button onClick={() => setStep('review')} className="btn-secondary"><ChevronLeft size={18} /> Atrás</button>
+                    <button onClick={() => setStep('roedores')} className="btn-secondary"><ChevronLeft size={18} /> Atrás</button>
                     <button onClick={handleNext} className="btn-primary">Continuar <ChevronRight size={18} /></button>
                 </div>
             </div>

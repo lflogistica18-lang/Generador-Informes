@@ -6,6 +6,7 @@ import Layout from './components/layout/Layout';
 import SelectClientPage from './pages/SelectClientPage';
 import UploadPage from './pages/UploadPage';
 import ReviewPage from './pages/ReviewPage';
+import RoedoresConfigPage from './pages/RoedoresConfigPage';
 import VoladoresPage from './pages/VoladoresPage';
 import SummariesPage from './pages/SummariesPage';
 import PreviewPage from './pages/PreviewPage';
@@ -23,6 +24,8 @@ function App() {
         return <UploadPage />;
       case 'review':
         return <ReviewPage />;
+      case 'roedores':
+        return <RoedoresConfigPage />;
       case 'voladores':
         return <VoladoresPage />;
       case 'summaries':

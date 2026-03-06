@@ -154,6 +154,34 @@ const PrintPage = () => {
                                 </div>
                             </div>
 
+                            {informeData.configuracion_roedores?.sectores?.length > 0 && (
+                                <div className="mb-8 break-inside-avoid">
+                                    <div className="text-[10pt] font-bold text-primary-800 mb-2 border-b border-primary-100 pb-1 uppercase tracking-wider">Control de Estaciones por Sector</div>
+                                    <table className="w-full text-[8.5pt] border-collapse">
+                                        <thead>
+                                            <tr className="bg-primary-50 text-left">
+                                                <th className="p-2 border border-primary-200">Sector</th>
+                                                <th className="p-2 border border-primary-200 text-center">Cebaderas CB (Cebo)</th>
+                                                <th className="p-2 border border-primary-200 text-center">Cebaderas PG (Pegamento)</th>
+                                                <th className="p-2 border border-primary-200 text-center bg-primary-100">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {informeData.configuracion_roedores.sectores.map((s, i) => (
+                                                <tr key={i}>
+                                                    <td className="p-2 border border-primary-100 font-medium">{s.nombre}</td>
+                                                    <td className="p-2 border border-primary-100 text-center">{s.cantidad_cb || 0}</td>
+                                                    <td className="p-2 border border-primary-100 text-center">{s.cantidad_pg || 0}</td>
+                                                    <td className="p-2 border border-primary-100 text-center font-bold text-sanitas bg-primary-50/30">
+                                                        {(s.cantidad_cb || 0) + (s.cantidad_pg || 0)}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            )}
+
                             {informeData.chart_consumos && (
                                 <div className="mb-8 break-inside-avoid">
                                     <div className="text-[10pt] font-bold text-primary-800 mb-2 border-b border-primary-100 pb-1">Análisis de Consumos</div>
