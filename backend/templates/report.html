@@ -275,9 +275,35 @@
         <div class="section-header">Control de Roedores</div>
         <p><strong>Sector:</strong> {{ sucursal_nombre }}</p>
         <p>
-            <strong>Estaciones Perímetro Externo:</strong> {{ estaciones_perimetro_externo or 'X' }} Und<br>
-            <strong>Estaciones Perímetro Interno:</strong> {{ estaciones_perimetro_interno or 'X' }} Und
+            <strong>Estaciones Perímetro Externo:</strong> {{ estaciones_perimetro_externo or '0' }} Und<br>
+            <strong>Estaciones Perímetro Interno:</strong> {{ estaciones_perimetro_interno or '0' }} Und
         </p>
+
+        {% if configuracion_roedores and configuracion_roedores.sectores %}
+        <div class="subsection-header">Control de Estaciones por Sector</div>
+        <table style="margin-bottom: 25px;">
+            <thead>
+                <tr>
+                    <th>Sector</th>
+                    <th style="text-align: center;">Cebaderas CB (Cebo)</th>
+                    <th style="text-align: center;">Cebaderas PG (Pegamento)</th>
+                    <th style="text-align: center; background-color: #ECEFF1;">Total Estaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sector in configuracion_roedores.sectores %}
+                <tr>
+                    <td>{{ sector.nombre }}</td>
+                    <td style="text-align: center;">{{ sector.cantidad_cb or 0 }}</td>
+                    <td style="text-align: center;">{{ sector.cantidad_pg or 0 }}</td>
+                    <td style="text-align: center; font-bold; background-color: #FAFAFA;">
+                        {{ (sector.cantidad_cb or 0) + (sector.cantidad_pg or 0) }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
 
         <div class="subsection-header">Desvíos del Mes</div>
         <table>
