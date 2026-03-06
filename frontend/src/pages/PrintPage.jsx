@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useReportStore } from '../store/useReportStore';
 import { ChevronLeft, Printer, Download } from 'lucide-react';
+import { STATIC_URL } from '../services/api';
 
 const SummarySection = ({ title, content }) => (
     <div className="mb-6">
@@ -250,7 +251,7 @@ const PrintPage = () => {
                                             <div key={i} className="photo-card-new">
                                                 <div className="photo-container">
                                                     <img
-                                                        src={foto.imagen_base64 || (foto.imagen_path ? `http://localhost:8000/static/images/${foto.imagen_path.includes('conforme_') ? foto.imagen_path.split(pathStyle).slice(-2).join('/') : foto.imagen_path.split(pathStyle).pop()}` : '')}
+                                                        src={foto.imagen_base64 || (foto.imagen_path ? `${STATIC_URL}/images/${foto.imagen_path.includes('conforme_') ? foto.imagen_path.split(pathStyle).slice(-2).join('/') : foto.imagen_path.split(pathStyle).pop()}` : '')}
                                                         className="max-h-full max-w-full object-contain"
                                                         alt="Desvío"
                                                     />
@@ -297,7 +298,7 @@ const PrintPage = () => {
                                             <div key={i} className="photo-card-new">
                                                 <div className="photo-container">
                                                     <img
-                                                        src={foto.imagen_base64 || (foto.imagen_path ? `http://localhost:8000/static/images/${foto.imagen_path.includes('conforme_') ? foto.imagen_path.split(pathStyle).slice(-2).join('/') : foto.imagen_path.split(pathStyle).pop()}` : '')}
+                                                        src={foto.imagen_base64 || (foto.imagen_path ? `${STATIC_URL}/images/${foto.imagen_path.includes('conforme_') ? foto.imagen_path.split(pathStyle).slice(-2).join('/') : foto.imagen_path.split(pathStyle).pop()}` : '')}
                                                         className="max-h-full max-w-full object-contain"
                                                         alt="Desvío"
                                                     />

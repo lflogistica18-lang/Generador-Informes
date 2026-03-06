@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useReportStore } from '../store/useReportStore';
 import { ChevronRight, ChevronLeft, Plus, Trash2, PieChart } from 'lucide-react';
-import axios from 'axios';
+import api from '../services/api';
 
 const VoladoresPage = () => {
     const setStep = useReportStore((state) => state.setStep);
@@ -52,7 +52,7 @@ const VoladoresPage = () => {
 
     const consolidarDatos = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/api/reports/consolidate', {
+            const response = await api.post('/reports/consolidate', {
                 conformes: uploadResult.conformes,
                 mips: uploadResult.mips,
                 informe_base: {
