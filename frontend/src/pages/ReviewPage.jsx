@@ -1,13 +1,45 @@
-import React, { useState } from 'react';
-import { useReportStore } from '../store/useReportStore';
-import { Check, AlertTriangle, FileText, ChevronRight } from 'lucide-react';
+import api from '../services/api';
+import { Check, AlertTriangle, FileText, ChevronRight, Loader2 } from 'lucide-react';
 
 const ReviewPage = () => {
     const setStep = useReportStore((state) => state.setStep);
     const uploadResult = useReportStore((state) => state.uploadResult);
     const setUploadResult = useReportStore((state) => state.setUploadResult);
+    const setInformeData = useReportStore((state) => state.setInformeData);
+    const cliente = useReportStore((state) => state.cliente);
+    const sucursal = useReportStore((state) => state.sucursal);
+    const mes = useReportStore((state) => state.mes);
+    const anio = useReportStore((state) => state.anio);
 
     const [activeTab, setActiveTab] = useState('conformes');
+    const [isConsolidating, setIsConsolidating] = useState(false);
+
+    const consolidarDatos = async () => {
+        setIsConsolidating(true);
+        try {
+            const response = await api.post('reports/consolidate', {
+                conformes: uploadResult.conformes,
+                mips: uploadResult.mips,
+                informe_base: {
+                    cliente_nombre: cliente?.nombre,
+                    sucursal_nombre: sucursal?.nombre,
+                    mes: mes,
+                    anio: anio
+                }
+            });
+            setInformeData(response.data);
+            setStep('roedores');
+        } catch (err) {
+            console.error('Error al consolidar:', err);
+            alert('Error al consolidar los datos. Por favor reintente.');
+        } finally {
+            setIsConsolidating(false);
+        }
+    };
+
+    const handleNext = () => {
+        consolidarDatos();
+    };
 
     const updateRastrerosField = (index, field, value) => {
         if (!uploadResult) return;
@@ -40,10 +72,19 @@ const ReviewPage = () => {
                     <p className="text-primary-600">Verifica los datos de las visitas y completa los campos faltantes.</p>
                 </div>
                 <button
-                    onClick={() => setStep('roedores')}
-                    className="btn-primary"
+                    onClick={handleNext}
+                    disabled={isConsolidating}
+                    className="btn-primary min-w-[200px]"
                 >
-                    Siguiente: Roedores <ChevronRight size={18} />
+                    {isConsolidating ? (
+                        <>
+                            <Loader2 className="animate-spin" size={18} /> Consolidando...
+                        </>
+                    ) : (
+                        <>
+                            Siguiente: Roedores <ChevronRight size={18} />
+                        </>
+                    )}
                 </button>
             </div>
 

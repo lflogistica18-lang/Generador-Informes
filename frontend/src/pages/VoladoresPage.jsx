@@ -21,11 +21,9 @@ const VoladoresPage = () => {
     const [especies, setEspecies] = useState(ESPECIES_FIJAS);
     const [nuevaEspecie, setNuevaEspecie] = useState('');
 
-    // Cargar datos iniciales si ya existen o crear estructura base
+    // Cargar datos iniciales desde el informe consolidado
     useEffect(() => {
-        if (!informeData) {
-            consolidarDatos();
-        } else if (informeData.capturas_trampas_uv && informeData.capturas_trampas_uv.length > 0) {
+        if (informeData?.capturas_trampas_uv && informeData.capturas_trampas_uv.length > 0) {
             // Asegurar que las capturas existentes tengan todas las especies fijas
             const capturasActualizadas = informeData.capturas_trampas_uv.map(c => {
                 const nuevasCapturas = { ...c.capturas };
@@ -39,7 +37,7 @@ const VoladoresPage = () => {
             // Combinar especies guardadas con las fijas
             const todasEspecies = Array.from(new Set([...ESPECIES_FIJAS, ...(informeData.especies_voladores || [])]));
             setEspecies(todasEspecies);
-        } else {
+        } else if (informeData) {
             // Crear base según cantidad de trampas UV (usar cantidad_trampas_uv del store o 12 por defecto)
             const nTrampas = informeData?.cantidad_trampas_uv || 12;
             const inicial = Array.from({ length: nTrampas }, (_, i) => ({
@@ -48,29 +46,7 @@ const VoladoresPage = () => {
             }));
             setCapturas(inicial);
         }
-    }, []);
-
-    const consolidarDatos = async () => {
-        try {
-            const response = await api.post('reports/consolidate', {
-                conformes: uploadResult.conformes,
-                mips: uploadResult.mips,
-                informe_base: {
-                    cliente_nombre: cliente.nombre,
-                    sucursal_nombre: sucursal.nombre,
-                    sucursal_direccion: 'Dirección Mock', // Debería venir del cliente/sucursal real
-                    mes: mes,
-                    anio: anio
-                }
-            });
-            setInformeData(response.data);
-            if (response.data.capturas_trampas_uv?.length > 0) {
-                setCapturas(response.data.capturas_trampas_uv);
-            }
-        } catch (err) {
-            console.error('Error al consolidar:', err);
-        }
-    };
+    }, [informeData]);
 
     const updateCaptura = (trampaIdx, especie, valor) => {
         const nuevas = [...capturas];
