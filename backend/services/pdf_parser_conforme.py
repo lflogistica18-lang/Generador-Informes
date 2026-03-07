@@ -301,9 +301,10 @@ def parsear_conforme(filepath: str) -> ParsedConforme:
             
             # Búsqueda robusta de descripción (misma lógica que image_extractor)
             lineas_pag = [l.strip() for l in texto_pag.split('\n') if l.strip()]
-            descripcion = None
+            desc_partes = []
             for i, linea in enumerate(lineas_pag):
-                if "sanitasambiental" in linea.lower() or \
+                lin_low = linea.lower()
+                if "sanitas" in lin_low or "ambiental" in lin_low or \
                    linea in ["RELEVAMIENTOS", "Avistamiento"] or \
                    linea.isdigit():
                     continue
@@ -311,8 +312,13 @@ def parsear_conforme(filepath: str) -> ParsedConforme:
                     continue
                 if "Sector:" in linea:
                     continue
-                descripcion = linea
-                break
+                desc_partes.append(linea)
+                if len(desc_partes) >= 2: # Solo tomar las primeras dos líneas útiles para evitar ruido extra
+                    break
+            
+            descripcion = " - ".join(desc_partes)
+            if len(descripcion) > 100:
+                descripcion = descripcion[:97] + "..."
             
             tipo_plaga = _clasificar_tipo_plaga(sector or "", descripcion or "")
             

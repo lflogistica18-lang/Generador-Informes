@@ -72,9 +72,11 @@ def extraer_imagenes_conforme(filepath: str, track_id: str = "unknown") -> List[
             
             # Buscar descripción en el texto de la página
             lineas = [l.strip() for l in texto_pag.split('\n') if l.strip()]
+            desc_partes = []
             for i, linea in enumerate(lineas):
+                lin_low = linea.lower()
                 # Filtro robusto para URLs y texto basura
-                if "sanitasambiental" in linea.lower() or \
+                if "sanitas" in lin_low or "ambiental" in lin_low or \
                    linea in ["RELEVAMIENTOS", "Avistamiento"] or \
                    linea.isdigit():
                     continue
@@ -82,9 +84,13 @@ def extraer_imagenes_conforme(filepath: str, track_id: str = "unknown") -> List[
                     continue
                 if "Sector:" in linea:
                     continue
-                # Primera línea de contenido real = descripción
-                descripcion = linea
-                break
+                desc_partes.append(linea)
+                if len(desc_partes) >= 2:
+                    break
+            
+            descripcion = " - ".join(desc_partes)
+            if len(descripcion) > 100:
+                descripcion = descripcion[:97] + "..."
             
             tipo_plaga = _clasificar_tipo_plaga(sector or "", descripcion or "")
             

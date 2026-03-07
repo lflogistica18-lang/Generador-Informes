@@ -180,6 +180,7 @@ class InformeData(BaseModel):
     cantidad_trampas_uv: Optional[int] = None
     codigos_trampas_uv: List[str] = []
     especies_voladores: List[str] = []
+    configuracion_roedores: Optional[dict] = None
 
     # Datos consolidados de roedores
     observaciones_roedores: List[dict] = []  # [{fecha, observaciones, tiene_desvio}]
