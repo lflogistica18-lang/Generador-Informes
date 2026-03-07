@@ -14,7 +14,7 @@ const VoladoresPage = () => {
     const informeData = useReportStore((state) => state.informeData);
 
     // Especies fijas solicitadas por el usuario
-    const ESPECIES_FIJAS = ['Moscas', 'Mosquitos', 'Polillas', 'Lepidópteros', 'Coleópteros', 'Dípteros', 'Otros'];
+    const ESPECIES_FIJAS = ['Moscas', 'Mosquitos', 'Polillas', 'Pequeños dípteros', 'Coleópteros', 'Otros'];
 
     // Estado local para capturas de voladores
     const [capturas, setCapturas] = useState([]);
