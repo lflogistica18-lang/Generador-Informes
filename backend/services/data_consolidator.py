@@ -226,9 +226,12 @@ def consolidar_datos(
         tiene_desvio_roedores = any(d.tipo_plaga == "roedores" for d in conforme.desvios)
         
         if not obs_text and not tiene_desvio_roedores:
-            obs_text = "Se monitorearon estaciones de control, no se registraron desvíos."
+            obs_text = "Monitoreo de estaciones de control: Se monitorearon estaciones de control, no se registraron desvíos."
         elif tiene_desvio_roedores:
-            obs_text = obs_text + " - Referencia fotográfica" if obs_text else "Se registraron hallazgos - Ver referencia"
+            prefix = "Monitoreo de estaciones de control: "
+            obs_text = prefix + (obs_text + " - Referencia fotográfica" if obs_text else "Se registraron hallazgos - Ver referencia")
+        else:
+            obs_text = f"Monitoreo de estaciones de control: {obs_text}"
         
         observaciones_roedores.append({
             "fecha": conforme.fecha or "Sin fecha",
@@ -315,7 +318,29 @@ def consolidar_datos(
         for repos in mip.reposiciones:
             tipo = repos.tipo or "Sin tipo"
             reposiciones_por_tipo[tipo] = reposiciones_por_tipo.get(tipo, 0) + (repos.cantidad or 0)
+
+        # Agregar comentario del MIP a la tabla de monitoreo
+        if mip.comentarios or mip.fecha:
+            mip_obs = mip.comentarios or "Sin observaciones registradas en planilla."
+            observaciones_roedores.append({
+                "fecha": mip.fecha or "Sin fecha",
+                "observaciones": f"Monitoreo de estaciones de control: {mip_obs}",
+                "tiene_desvio": False, # MIPs usualmente no traen el link a la foto directamente aquí
+            })
     
+    # Ordenar tabla de monitoreo/observaciones por fecha
+    def parse_fecha(f_str):
+        try:
+            # Formato esperado DD/MM/YYYY
+            partes = f_str.split("/")
+            if len(partes) == 3:
+                return f"{partes[2]}-{partes[1]}-{partes[0]}"
+        except:
+            pass
+        return "0000-00-00"
+
+    observaciones_roedores.sort(key=lambda x: parse_fecha(x["fecha"]))
+
     # Ordenar ranking de cebaderas (Top 10 por consumo)
     ranking_lista = sorted(
         ranking_cebaderas.values(),
