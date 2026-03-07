@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+import { useReportStore } from '../store/useReportStore';
 import api from '../services/api';
 import { Check, AlertTriangle, FileText, ChevronRight, Loader2 } from 'lucide-react';
 
