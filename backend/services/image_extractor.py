@@ -21,19 +21,25 @@ UPLOADS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads"
 def _clasificar_tipo_plaga(sector: str, descripcion: str) -> str:
     """
     Clasifica el tipo de plaga del desvío basándose en el contexto textual.
-    Retorna: 'roedores' | 'voladores' | 'rastreros'
+    Retorna: 'roedores' | 'voladores' | 'rastreros' | 'otros'
     """
     texto = f"{sector or ''} {descripcion or ''}".lower()
     
-    if any(k in texto for k in ["roedor", "rata", "raton", "placa de pegamento", "cebadera", "cb"]):
-        return "roedores"
-    elif any(k in texto for k in ["mosca", "volador", "trampa uv", "tuv", "lepidoptero"]):
+    # Prioridad: Voladores (TUV suele ser muy específico)
+    if any(k in texto for k in ["mosca", "volador", "trampa uv", "tuv", "insectocut", "polilla", "lepidoptero", "mosquito"]):
         return "voladores"
-    elif any(k in texto for k in ["cucaracha", "rastrero", "hormiga", "insecto"]):
+    # Rastreros
+    elif any(k in texto for k in ["cucaracha", "rastrero", "hormiga", "insecto", "aracnido", "araña", "blatella"]):
         return "rastreros"
+    # Roedores (palabras clave muy específicas para no capturar falsos positivos)
+    elif any(k in texto for k in ["roedor", "rata", "raton", "cebadera", "cb", "placa de pegamento", "consumo", "rodenticida"]):
+        return "roedores"
+    # Aves / Otros / Estructural
+    elif any(k in texto for k in ["paloma", "ave", "pajaro", "nido", "pincho", "malla", "estructural", "cerramiento", "abertura"]):
+        return "otros"
     
-    # Por defecto, si no hay pista clara → roedores (más común en estos PDFs)
-    return "roedores"
+    # Por defecto, si no hay pista clara → otros (más seguro para no sesgar roedores)
+    return "otros"
 
 
 def extraer_imagenes_conforme(filepath: str, track_id: str = "unknown") -> List[DesvioFotografico]:
