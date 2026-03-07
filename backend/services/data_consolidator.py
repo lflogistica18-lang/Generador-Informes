@@ -199,52 +199,7 @@ def consolidar_datos(
     campos_faltantes = []
 
     for conforme in conformes:
-        r = conforme.roedores
-        if not r:
-            continue
-        
-        # Filtrar visitas "No realizado"
-        if r.modo and r.modo.lower() == "no realizado":
-            continue
-        
-        # Lógica de texto automático si no hay observaciones ni desvíos
-        obs_text = r.observaciones or ""
-        tiene_desvio = any(d.tipo_plaga == "roedores" for d in conforme.desvios)
-        
-        if not obs_text and not tiene_desvio:
-            obs_text = "Se monitorearon estaciones de control, no se registraron desvíos."
-        elif tiene_desvio:
-            # Buscar referencia cruzada si hay desvíos
-            obs_text = obs_text + " - Referencia fotográfica" if obs_text else "Se registraron hallazgos - Ver referencia"
-        
-        observaciones_roedores.append({
-            "fecha": conforme.fecha or "Sin fecha",
-            "observaciones": obs_text,
-            "tiene_desvio": tiene_desvio,
-        })
-
-        # IMPROVED LOGIC: Sumar consumos y capturas de visitas intermedias (no MIP)
-        # Solo sumamos si NO existe un MIP para esta fecha (para evitar doble conteo)
-        fechas_mips = {m.fecha for m in mips if m.fecha}
-        
-        if r.consumo and r.consumo > 0:
-            if conforme.fecha and conforme.fecha in fechas_mips:
-                # Ya está cubierto por el MIP
-                pass 
-            else:
-                sector_gen = "Relevamientos Intermedios"
-                consumos_por_sector[sector_gen] = consumos_por_sector.get(sector_gen, 0) + r.consumo
-        
-        if r.capturas and r.capturas > 0:
-             # Si no hay detalle de sector, se agrega como genérico
-             capturas_cebaderas["Intermedio"] = {
-                 "codigo": "S/D",
-                 "herramienta": "Trampa",
-                 "subseccion": "Visitas Intermedias",
-                 "capturas": capturas_cebaderas.get("Intermedio", {}).get("capturas", 0) + r.capturas
-             }
-        
-        # Desvíos fotográficos clasificados
+        # 1. Desvíos fotográficos (Siempre procesar por cada visita)
         for d in conforme.desvios:
             tp = (d.tipo_plaga or "").lower()
             if tp == "roedores":
@@ -255,6 +210,47 @@ def consolidar_datos(
                 desvios_rastreros.append(d)
             else:
                 desvios_otros.append(d)
+
+        # 2. Relevamientos de Roedores
+        r = conforme.roedores
+        if not r:
+            continue
+        
+        # Filtrar visitas "No realizado"
+        if r.modo and r.modo.lower() == "no realizado":
+            continue
+        
+        # Lógica de texto automático si no hay observaciones ni desvíos
+        obs_text = r.observaciones or ""
+        # Solo verificamos desvios de roedores para este texto
+        tiene_desvio_roedores = any(d.tipo_plaga == "roedores" for d in conforme.desvios)
+        
+        if not obs_text and not tiene_desvio_roedores:
+            obs_text = "Se monitorearon estaciones de control, no se registraron desvíos."
+        elif tiene_desvio_roedores:
+            obs_text = obs_text + " - Referencia fotográfica" if obs_text else "Se registraron hallazgos - Ver referencia"
+        
+        observaciones_roedores.append({
+            "fecha": conforme.fecha or "Sin fecha",
+            "observaciones": obs_text,
+            "tiene_desvio": tiene_desvio_roedores,
+        })
+
+        # Sumar consumos y capturas de visitas intermedias
+        fechas_mips = {m.fecha for m in mips if m.fecha}
+        
+        if r.consumo and r.consumo > 0:
+            if not (conforme.fecha and conforme.fecha in fechas_mips):
+                sector_gen = "Relevamientos Intermedios"
+                consumos_por_sector[sector_gen] = consumos_por_sector.get(sector_gen, 0) + r.consumo
+        
+        if r.capturas and r.capturas > 0:
+             capturas_cebaderas["Intermedio"] = {
+                 "codigo": "S/D",
+                 "herramienta": "Trampa",
+                 "subseccion": "Visitas Intermedias",
+                 "capturas": capturas_cebaderas.get("Intermedio", {}).get("capturas", 0) + r.capturas
+             }
 
     # Consolidar datos de los MIPs
     for mip in mips:
