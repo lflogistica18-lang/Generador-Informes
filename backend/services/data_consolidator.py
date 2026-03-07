@@ -285,12 +285,18 @@ def consolidar_datos(
         total_dashboard = (mip.dashboard.gramos_consumos or 0)
         if total_dashboard > (suma_relevamiento_mip + 0.1): # Umbral de 0.1g para evitar ruido por redondeo
             diferencia = round(total_dashboard - suma_relevamiento_mip, 2)
-            # Buscar el primer sector listado en el relevamiento de este MIP
+            # Buscar el primer sector que sea "Externo" para volcar la diferencia
             sectores_mip = [p.subseccion for p in mip.relevamiento if p.subseccion]
+            sector_dif = "Sector Principal" # Fallback
+            
             if sectores_mip:
-                sector_dif = sectores_mip[0].strip()
-            else:
-                sector_dif = "Sector Principal"
+                # Intentar encontrar uno que diga "extern"
+                externo = next((s for s in sectores_mip if "extern" in s.lower()), None)
+                if externo:
+                    sector_dif = externo.strip()
+                else:
+                    sector_dif = sectores_mip[0].strip()
+            
             consumos_por_sector[sector_dif] = round(consumos_por_sector.get(sector_dif, 0) + diferencia, 2)
 
         # Reposiciones por tipo
