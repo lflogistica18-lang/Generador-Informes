@@ -28,6 +28,9 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
     errores: List[str] = []
     campos_faltantes: List[dict] = []
 
+    # Asegurar que el directorio de uploads exista
+    os.makedirs(UPLOADS_DIR, exist_ok=True)
+
     for file in files:
         if not file.filename.lower().endswith(".pdf"):
             errores.append(f"{file.filename}: No es un archivo PDF")
