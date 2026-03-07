@@ -15,16 +15,15 @@ app = FastAPI(
     version=config.APP_VERSION,
 )
 
-# CORS — permitir requests desde el frontend
-origins = config.ALLOWED_ORIGINS
-
+# CORS — Abrimos totalmente para depurar en este paso
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=False, # Ponemos False para que funcione con '*' mientras probamos
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # Servir imágenes estáticas extraídas de los PDFs para que el frontend pueda mostrarlas
