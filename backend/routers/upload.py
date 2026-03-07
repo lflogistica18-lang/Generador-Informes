@@ -14,7 +14,10 @@ from services.image_extractor import extraer_imagenes_conforme
 
 router = APIRouter()
 
-UPLOADS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "uploads")
+# Directorio de subidas (Ruta absoluta segura)
+UPLOADS_DIR_BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+UPLOADS_DIR = os.path.join(UPLOADS_DIR_BASE, "uploads")
+IMAGES_DIR = os.path.join(UPLOADS_DIR, "images")
 
 
 @router.post("/", response_model=UploadResponse)
@@ -23,13 +26,17 @@ async def upload_pdfs(files: List[UploadFile] = File(...)):
     Recibe múltiples PDFs, los clasifica (Conforme vs MIP) y parsea.
     Retorna los datos extraídos + lista de campos faltantes.
     """
+    print(f"--- NUEVA PETICIÓN DE SUBIDA: {len(files)} archivos ---")
+    print(f"UPLOADS_DIR actual: {UPLOADS_DIR}")
+    
+    # Asegurar que el directorio de uploads exista
+    os.makedirs(UPLOADS_DIR, exist_ok=True)
+    os.makedirs(IMAGES_DIR, exist_ok=True)
+
     conformes: List[ParsedConforme] = []
     mips: List[ParsedMIP] = []
     errores: List[str] = []
     campos_faltantes: List[dict] = []
-
-    # Asegurar que el directorio de uploads exista
-    os.makedirs(UPLOADS_DIR, exist_ok=True)
 
     for file in files:
         if not file.filename.lower().endswith(".pdf"):
