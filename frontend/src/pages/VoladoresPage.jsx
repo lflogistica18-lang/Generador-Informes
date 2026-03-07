@@ -52,7 +52,7 @@ const VoladoresPage = () => {
 
     const consolidarDatos = async () => {
         try {
-            const response = await api.post('/reports/consolidate', {
+            const response = await api.post('reports/consolidate', {
                 conformes: uploadResult.conformes,
                 mips: uploadResult.mips,
                 informe_base: {

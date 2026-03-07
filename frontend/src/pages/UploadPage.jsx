@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { useReportStore } from '../store/useReportStore';
 import { Upload, X, FileText, CheckCircle, AlertTriangle, Loader2 } from 'lucide-react';
-import axios from 'axios';
+import api from '../services/api';
 
 const UploadPage = () => {
     const setStep = useReportStore((state) => state.setStep);
@@ -40,11 +40,13 @@ const UploadPage = () => {
         });
 
         try {
-            const response = await axios.post('http://localhost:8000/api/upload/', formData, {
+            // Usar api de services configurado con baseURL dinámico
+            const response = await api.post('upload/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
+
 
             setUploadResult(response.data);
             // Avanzar al siguiente paso si todo salió bien
