@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useReportStore } from '../store/useReportStore';
 import { FileText, CheckCircle2, Loader2, ChevronLeft, Download, RotateCcw, Printer } from 'lucide-react';
-import axios from 'axios';
+import api from '../services/api';
 
 const PreviewPage = () => {
     const setStep = useReportStore((state) => state.setStep);
@@ -15,9 +15,10 @@ const PreviewPage = () => {
         setIsGeneratingPdf(true);
         setError('');
         try {
-            const response = await axios.post('http://localhost:8000/api/reports/generate-pdf', informeData, {
+            const response = await api.post('reports/generate-pdf', informeData, {
                 responseType: 'blob',
             });
+
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
