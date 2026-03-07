@@ -106,11 +106,13 @@ def _parse_bloque_servicio(bloque: str, tipo_servicio: str) -> dict:
         datos["avistamiento"] = avist
 
     if "Rastreros" in tipo_servicio:
-        datos["maquinarias"] = _extraer_valor_simple(bloque, "Maquinarias:")
-        datos["producto"] = _extraer_valor_simple(bloque, "Producto:")
-        # Comentarios multilínea
-        comentarios = _extraer_valor(bloque, "Comentarios:")
-        datos["comentarios"] = comentarios
+        datos["maquinarias"] = _extraer_valor(bloque, "Maquinarias:")
+        datos["producto"] = _extraer_valor(bloque, "Producto:")
+        datos["principio_activo"] = _extraer_valor(bloque, "Principio activo:")
+        datos["dosis"] = _extraer_valor(bloque, "Dosis:")
+        datos["cantidad"] = _extraer_valor(bloque, "Cantidad:")
+        # Comentarios multilínea (sectores tratados suelen venir aquí)
+        datos["comentarios"] = _extraer_valor(bloque, "Comentarios:")
 
     # Voladores / Mosquitos
     elif "Mosquitos" in tipo_servicio or "Voladores" in tipo_servicio:

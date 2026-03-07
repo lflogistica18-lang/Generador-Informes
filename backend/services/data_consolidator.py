@@ -46,6 +46,62 @@ def format_list_es(items: List[str]) -> str:
     return ", ".join(unique[:-1]) + " y " + unique[-1]
 
 
+def _expandir_aplicacion_rastreros(aplicacion: dict) -> List[dict]:
+    """
+    Si el campo 'producto' contiene múltiples productos (separados por +, /, o ,),
+    intenta expandir la aplicación en múltiples entradas para un desglose visual claro.
+    """
+    def split_clean(txt, seps):
+        if not txt: return []
+        # Escaparlos para regex
+        patron = "|".join([re.escape(s) for s in seps])
+        return [p.strip() for p in re.split(patron, txt) if p.strip()]
+
+    separadores = ["+", " / ", " - ", " y "]
+    
+    prod_orig = aplicacion.get("producto") or ""
+    # Si contiene el separador, procedemos
+    if not any(s in prod_orig for s in separadores):
+        return [aplicacion]
+
+    prods = split_clean(prod_orig, separadores)
+    if len(prods) <= 1:
+        return [aplicacion]
+
+    pa_orig = aplicacion.get("principio_activo") or ""
+    dosis_orig = aplicacion.get("dosis") or ""
+    cant_orig = aplicacion.get("cantidad_aplicada") or ""
+
+    pas = split_clean(pa_orig, separadores)
+    dosis_list = split_clean(dosis_orig, separadores)
+    cants_list = split_clean(cant_orig, separadores)
+
+    expandidas = []
+    for i, p in enumerate(prods):
+        new_app = aplicacion.copy()
+        new_app["producto"] = p
+        
+        # Mapear PA, Dosis y Cant si tienen datos correspondientes
+        if len(pas) == len(prods):
+            new_app["principio_activo"] = pas[i]
+        elif len(pas) > i:
+             new_app["principio_activo"] = pas[i]
+        
+        if len(dosis_list) == len(prods):
+            new_app["dosis"] = dosis_list[i]
+        elif len(dosis_list) > i:
+            new_app["dosis"] = dosis_list[i]
+            
+        if len(cants_list) == len(prods):
+            new_app["cantidad_aplicada"] = cants_list[i]
+        elif len(cants_list) > i:
+             new_app["cantidad_aplicada"] = cants_list[i]
+             
+        expandidas.append(new_app)
+    
+    return expandidas
+
+
 def _generar_borrador_resumen_roedores(
     observaciones: List[dict],
     capturas: List[dict],
@@ -432,7 +488,9 @@ def consolidar_datos(
                 "campos": faltantes_visita,
             })
         
-        aplicaciones_rastreros.append(aplicacion)
+        # Expandir si hay múltiples productos
+        aplicaciones_expandidas = _expandir_aplicacion_rastreros(aplicacion)
+        aplicaciones_rastreros.extend(aplicaciones_expandidas)
         
     informe_data.aplicaciones_rastreros = aplicaciones_rastreros
     informe_data.desvios_rastreros = desvios_rastreros
