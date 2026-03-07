@@ -176,7 +176,17 @@ const ReviewPage = () => {
                                             <p>Producto: {conf.rastreros.producto || <span className="text-red-500 italic">Faltante</span>}</p>
 
                                             {/* Inputs Editables */}
-                                            <div className="mt-2 grid grid-cols-2 gap-2">
+                                            <div className="mt-2 grid grid-cols-3 gap-2">
+                                                <div>
+                                                    <label className="text-xs text-primary-500 block">Principio Activo</label>
+                                                    <input
+                                                        type="text"
+                                                        className="w-full text-xs p-1 border rounded"
+                                                        placeholder="Ej: Deltametrina"
+                                                        value={conf.rastreros.principio_activo || ''}
+                                                        onChange={(e) => updateRastrerosField(idx, 'principio_activo', e.target.value)}
+                                                    />
+                                                </div>
                                                 <div>
                                                     <label className="text-xs text-primary-500 block">Dosis</label>
                                                     <input

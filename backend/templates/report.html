@@ -390,7 +390,7 @@
     <!-- SECCIÓN VOLADORES -->
     <div class="section" style="page-break-before: auto;">
         <div class="section-header">Control de Voladores</div>
-        <p><strong>Trampas UV Internas:</strong> {{ cantidad_trampas_uv or 'X' }} Und</p>
+        <p><strong>Trampas UV Internas:</strong> {{ capturas_trampas_uv | length }} Und</p>
 
         <div class="subsection-header">Observaciones del Mes</div>
         <table>
@@ -416,37 +416,6 @@
             <img src="data:image/png;base64,{{ chart_voladores }}" class="chart-img">
         </div>
 
-        <div class="subsection-header">Detalle de Capturas</div>
-        <table style="font-size: 9pt;">
-            <thead>
-                <tr>
-                    <th>Trampa</th>
-                    {% for esp in especies_voladores %}
-                    <th style="text-align: center;">{{ esp }}</th>
-                    {% endfor %}
-                    <th style="text-align: center; background-color: #ECEFF1;">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for item in capturas_trampas_uv %}
-                <tr>
-                    <td>{{ item.trampa }}</td>
-                    {% set row_total = 0 %}
-                    {% for esp in especies_voladores %}
-                    {% set count = item.capturas[esp] | default(0) %}
-                    <td
-                        style="text-align: center; {{ 'color: #D32F2F; font-weight: bold;' if count > 0 else 'color: #B0BEC5;' }}">
-                        {{ count if count > 0 else '-' }}
-                    </td>
-                    {% endfor %}
-                    <td style="text-align: center; font-weight: bold; background-color: #FAFAFA;">
-                        {% set row_total = item.capturas.values() | sum %}
-                        {{ row_total }}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
         {% endif %}
 
         <div class="subsection-header">Resumen de Tratamiento</div>

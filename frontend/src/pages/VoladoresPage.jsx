@@ -65,6 +65,17 @@ const VoladoresPage = () => {
         setNuevaEspecie('');
     };
 
+    const removeEspecie = (espToRemove) => {
+        const nuevasEspecies = especies.filter(e => e !== espToRemove);
+        setEspecies(nuevasEspecies);
+        const nuevas = capturas.map(c => {
+            const nuevasCapturas = { ...c.capturas };
+            delete nuevasCapturas[espToRemove];
+            return { ...c, capturas: nuevasCapturas };
+        });
+        setCapturas(nuevas);
+    };
+
     const handleNext = () => {
         setInformeData({
             ...informeData,
@@ -111,7 +122,18 @@ const VoladoresPage = () => {
                             <tr className="bg-primary-100">
                                 <th className="p-3 text-left border-b border-primary-200 sticky left-0 bg-primary-100 z-10 w-32 font-bold">Trampa / ID</th>
                                 {especies.map(esp => (
-                                    <th key={esp} className="p-3 text-center border-b border-primary-200 font-bold">{esp}</th>
+                                    <th key={esp} className="p-3 border-b border-primary-200 font-bold min-w-[120px]">
+                                        <div className="flex items-center justify-center gap-2">
+                                            {esp}
+                                            <button
+                                                onClick={() => removeEspecie(esp)}
+                                                className="text-red-400 hover:text-red-600 transition-colors"
+                                                title="Eliminar especie"
+                                            >
+                                                <Trash2 size={14} />
+                                            </button>
+                                        </div>
+                                    </th>
                                 ))}
                                 <th className="p-3 text-center border-b border-primary-200 font-bold bg-primary-200">Total</th>
                                 <th className="p-3 text-center border-b border-primary-200">Acciones</th>

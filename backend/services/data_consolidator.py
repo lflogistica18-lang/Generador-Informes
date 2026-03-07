@@ -130,10 +130,14 @@ def _generar_borrador_resumen_rastreros(aplicaciones: List[dict]) -> str:
         accion = f"Se desarrollaron {n_apps} maniobras operativas destinadas a fortalecer la barrera química residual"
 
     sectores = list({a.get("sectores_tratados", "") for a in aplicaciones if a.get("sectores_tratados")})
-    loc_str = f"recorriendo los rubros: {format_list_es(sectores)}" if sectores else "sobre la franja de zonificación crítica del establecimiento"
-
-    partes.append(f"{accion}, {loc_str}. Para tales fines, nos valimos de la utilización de {prod_str}.")
-    partes.append("Los trabajos abordados transcurrieron de forma habitual y permitieron ratificar las condiciones higiénicas en los depósitos y galerías. De esta manera brindamos un contundente control para evitar el establecimiento biológico de colonias entomológicas.")
+    
+    # Redacción ajustada para evitar repeticiones e inyecciones de texto crudo de los técnicos
+    partes.append(f"{accion}. Para estos fines, se utilizaron los productos: {prod_str}.")
+    
+    if sectores:
+        partes.append(f"Las zonas o áreas cubiertas incluyeron: {format_list_es(sectores)}.")
+        
+    partes.append("Los trabajos abordados transcurrieron de forma habitual, sin novedades que impidan el correcto desarrollo de la aplicación. De esta manera brindamos un contundente control para evitar el establecimiento biológico de plagas.")
     
     return clean_text(" ".join(partes))
 
@@ -278,11 +282,17 @@ def consolidar_datos(
                     capturas_cebaderas[cod]["capturas"] += punto.capturas
         
         # VALIDACIÓN: Si el total del dashboard es mayor que la suma detallada del relevamiento,
-        # agregamos la diferencia como "Otros Sectores" para no perder gramos en el informe.
+        # agregamos la diferencia al primer sector registrado en el MIP para no perder gramos
+        # y basarnos siempre en los sectores reales (pedido del usuario).
         total_dashboard = (mip.dashboard.gramos_consumos or 0)
         if total_dashboard > (suma_relevamiento_mip + 0.1): # Umbral de 0.1g para evitar ruido por redondeo
             diferencia = round(total_dashboard - suma_relevamiento_mip, 2)
-            sector_dif = "Otros Sectores / Ajuste"
+            # Buscar el primer sector listado en el relevamiento de este MIP
+            sectores_mip = [p.subseccion for p in mip.relevamiento if p.subseccion]
+            if sectores_mip:
+                sector_dif = sectores_mip[0].strip()
+            else:
+                sector_dif = "Sector Principal"
             consumos_por_sector[sector_dif] = round(consumos_por_sector.get(sector_dif, 0) + diferencia, 2)
 
         # Reposiciones por tipo
@@ -352,7 +362,7 @@ def consolidar_datos(
             "fecha": conforme.fecha or "Sin fecha",
             "producto": r.producto,
             "laboratorio": None,       
-            "principio_activo": None,  
+            "principio_activo": r.principio_activo,  
             "dosis": r.dosis,             # Valor editado en frontend o nulo
             "cantidad_aplicada": r.cantidad, # Valor editado en frontend o nulo
             "sectores_tratados": r.comentarios,

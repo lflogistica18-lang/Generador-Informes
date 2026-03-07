@@ -13,6 +13,7 @@ class ServicioRastreros(BaseModel):
     modo: Optional[str] = None          # Preventiva / Correctiva / No realizado
     maquinarias: Optional[str] = None
     producto: Optional[str] = None
+    principio_activo: Optional[str] = None  # Agregado para edición manual
     dosis: Optional[str] = None         # Agregado para edición manual
     cantidad: Optional[str] = None      # Agregado para edición manual
     avistamiento: Optional[str] = None  # Si / No

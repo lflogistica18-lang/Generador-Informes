@@ -30,6 +30,22 @@ async def consolidate_report(data: dict):
         
         informe = consolidar_datos(conformes, mips, informe_base)
         
+        # Calcular estaciones dinámicamente según configuración para el cuadro superior
+        if informe.configuracion_roedores and informe.configuracion_roedores.get("sectores"):
+            ext = 0
+            int_num = 0
+            for sec in informe.configuracion_roedores["sectores"]:
+                name = str(sec.get("nombre", "")).lower()
+                cb = int(sec.get("cantidad_cb") or 0)
+                pg = int(sec.get("cantidad_pg") or 0)
+                if "extern" in name:
+                    ext += cb + pg
+                elif "intern" in name:
+                    int_num += cb + pg
+            
+            informe.estaciones_perimetro_externo = ext
+            informe.estaciones_perimetro_interno = int_num
+        
         # Generar gráficos base64 iniciales
         informe.chart_consumos = _generate_consumos_chart(informe.consumos_por_sector)
         informe.chart_voladores = _generate_voladores_chart(informe.capturas_trampas_uv, informe.especies_voladores)
