@@ -131,11 +131,9 @@ def _generar_borrador_resumen_rastreros(aplicaciones: List[dict]) -> str:
 
     sectores = list({a.get("sectores_tratados", "") for a in aplicaciones if a.get("sectores_tratados")})
     
-    # Redacción ajustada para evitar repeticiones e inyecciones de texto crudo de los técnicos
+    # Redacción ajustada para evitar inyecciones de texto crudo kilométrico de los técnicos
     partes.append(f"{accion}. Para estos fines, se utilizaron los productos: {prod_str}.")
-    
-    if sectores:
-        partes.append(f"Las zonas o áreas cubiertas incluyeron: {format_list_es(sectores)}.")
+    partes.append("Las tareas se desarrollaron sobre las zonas críticas y los sectores acordados previamente en el cronograma de servicios.")
         
     partes.append("Los trabajos abordados transcurrieron de forma habitual, sin novedades que impidan el correcto desarrollo de la aplicación. De esta manera brindamos un contundente control para evitar el establecimiento biológico de plagas.")
     

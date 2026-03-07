@@ -275,8 +275,8 @@
         <div class="section-header">Control de Roedores</div>
         <p><strong>Sector:</strong> {{ sucursal_nombre }}</p>
         <p>
-            <strong>Estaciones Perímetro Externo:</strong> {{ estaciones_perimetro_externo or '0' }} Und<br>
-            <strong>Estaciones Perímetro Interno:</strong> {{ estaciones_perimetro_interno or '0' }} Und
+            <strong>Total Cebaderas (CB):</strong> {{ estaciones_perimetro_externo or '0' }} Und<br>
+            <strong>Total Placas Pegamento (PG):</strong> {{ estaciones_perimetro_interno or '0' }} Und
         </p>
 
         {% if configuracion_roedores and configuracion_roedores.sectores %}
