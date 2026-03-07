@@ -116,16 +116,16 @@ def _generate_voladores_chart(capturas_uv: list, especies: list):
     x = np.arange(n_trampas)
     bar_width = 0.6
     
-    # Paleta de colores premium (sustituyendo por una más armónica)
+    # Paleta de colores premium y contrastada
     palette = [
-        '#893101', # Burnt Orange
-        '#A64D1B', # Terracotta
-        '#C46A35', # Ochre
-        '#E18750', # Coral-ish
-        '#D4A373', # Tan
-        '#CCD5AE', # Sage
-        '#E9EDC9', # Cream
-        '#FEFAE0'  # Off-white
+        '#003f5c', # Azul oscuro (Moscas)
+        '#444e86', # Azul-Violeta (Mosquitosizado)
+        '#955196', # Púrpura (Polillas)
+        '#dd5182', # Rosa/Rojo (Lepidópteros)
+        '#ff6e54', # Naranja vibrante
+        '#ffa600', # Amarillo oro
+        '#2a9d8f', # Teal/Verde
+        '#e76f51'  # Terracota
     ]
     
     bottoms = np.zeros(n_trampas)

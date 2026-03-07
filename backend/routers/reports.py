@@ -32,19 +32,14 @@ async def consolidate_report(data: dict):
         
         # Calcular estaciones dinámicamente según configuración para el cuadro superior
         if informe.configuracion_roedores and informe.configuracion_roedores.get("sectores"):
-            ext = 0
-            int_num = 0
+            tot_cb = 0
+            tot_pg = 0
             for sec in informe.configuracion_roedores["sectores"]:
-                name = str(sec.get("nombre", "")).lower()
-                cb = int(sec.get("cantidad_cb") or 0)
-                pg = int(sec.get("cantidad_pg") or 0)
-                if "extern" in name:
-                    ext += cb + pg
-                elif "intern" in name:
-                    int_num += cb + pg
+                tot_cb += int(sec.get("cantidad_cb") or 0)
+                tot_pg += int(sec.get("cantidad_pg") or 0)
             
-            informe.estaciones_perimetro_externo = ext
-            informe.estaciones_perimetro_interno = int_num
+            informe.estaciones_perimetro_externo = tot_cb
+            informe.estaciones_perimetro_interno = tot_pg
         
         # Generar gráficos base64 iniciales
         informe.chart_consumos = _generate_consumos_chart(informe.consumos_por_sector)
