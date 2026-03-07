@@ -80,6 +80,8 @@ def _generar_borrador_resumen_roedores(
     
     if productos:
         partes.append(f"Para mantener el cerco preventivo activo, se aplicaron los insumos: {format_list_es(productos)}.")
+    else:
+        partes.append("No se utilizaron productos rodenticidas durante el periodo monitoreado, manteniéndose los insumos existentes en buen estado.")
     
     partes.append("Continuamos prestando especial atención en prevenir factores ambientales que favorezcan el anidamiento y tránsito de estas plagas.")
     
@@ -201,12 +203,15 @@ def consolidar_datos(
         if r.modo and r.modo.lower() == "no realizado":
             continue
         
-        # Tabla de desvíos del mes
-        tiene_desvio = bool(conforme.desvios)
+        # Lógica de texto automático si no hay observaciones ni desvíos
         obs_text = r.observaciones or ""
-        if tiene_desvio:
-            # Buscar referencia cruzada
-            obs_text = obs_text + " - Referencia" if obs_text else "- Referencia"
+        tiene_desvio = any(d.tipo_plaga == "roedores" for d in conforme.desvios)
+        
+        if not obs_text and not tiene_desvio:
+            obs_text = "Se monitorearon estaciones de control, no se registraron desvíos."
+        elif tiene_desvio:
+            # Buscar referencia cruzada si hay desvíos
+            obs_text = obs_text + " - Referencia fotográfica" if obs_text else "Se registraron hallazgos - Ver referencia"
         
         observaciones_roedores.append({
             "fecha": conforme.fecha or "Sin fecha",
