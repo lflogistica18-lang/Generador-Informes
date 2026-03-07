@@ -52,40 +52,37 @@ def _generar_borrador_resumen_roedores(
     consumos_sector: dict,
     productos: List[str],
 ) -> str:
-    """Genera un borrador automático del resumen de tratamiento de roedores."""
-    partes = []
-    
+    """Genera un borrador estructurado del resumen de tratamiento de roedores."""
     n_visitas = len(observaciones)
-    if n_visitas == 1:
-        partes.append("Se realizó 1 monitoreo de los puntos de control instalados (tanto perimetrales como internos).")
-    elif n_visitas > 1:
-        partes.append(f"Durante el mes se llevaron a cabo {n_visitas} monitoreos de las estaciones de control perimetrales e internas.")
-        
-    partes.append("En estas visitas se efectuó el acondicionamiento, inspección y reposición de cebos y placas adhesivas según correspondió.")
+    
+    # Encabezado
+    encabezado = "Se realizaron las tareas de control y mantenimiento del cerco sanitario contra roedores, cubriendo tanto los perímetros externos como los sectores internos."
+    
+    # Cuerpo (Desglose informativo)
+    cuerpo_partes = []
+    if n_visitas > 0:
+        cuerpo_partes.append(f"Durante este mes se concretaron {n_visitas} monitoreos sistemáticos.")
     
     total_consumo = sum(consumos_sector.values())
     if total_consumo > 0:
         sectores_activos = [k for k, v in consumos_sector.items() if v > 0]
-        partes.append(
-            f"Se constató un consumo acumulado de {total_consumo:g} gr de rodenticida. "
-            f"La mayor actividad se registró en: {format_list_es(sectores_activos)}. "
-            "Se implementaron medidas correctivas, reforzando la dotación de cebos en las cebaderas involucradas."
-        )
+        cuerpo_partes.append(f"Se registró un consumo acumulado de {total_consumo:g}g de rodenticida, con mayor incidencia en {format_list_es(sectores_activos)}.")
+        cuerpo_partes.append("Se procedió al refuerzo preventivo en los puntos con mayor actividad para asegurar el control de las colonias.")
     else:
-        partes.append("Durante la inspección de los anillos de seguridad no se detectaron consumos de cebos.")
-        
+        cuerpo_partes.append("El monitoreo de las estaciones no evidenció consumo de cebos, indicando que las barreras preventivas se encuentran operativas y sin presión de plaga.")
+
     total_capturas = sum(c.get("capturas", 0) for c in capturas)
     if total_capturas > 0:
-        partes.append(f"En cuanto a captura mediante placas adhesivas o trampas de captura viva, se contabilizaron un total de {int(total_capturas)} individuo(s).")
-    
+        cuerpo_partes.append(f"Se registraron {int(total_capturas)} capturas en dispositivos mecánicos/adhesivos, las cuales fueron debidamente retiradas y los equipos reacondicionados.")
+
     if productos:
-        partes.append(f"Para mantener el cerco preventivo activo, se aplicaron los insumos: {format_list_es(productos)}.")
-    else:
-        partes.append("No se utilizaron productos rodenticidas durante el periodo monitoreado, manteniéndose los insumos existentes en buen estado.")
+        cuerpo_partes.append(f"Insumos aplicados: {format_list_es(productos)}.")
     
-    partes.append("Continuamos prestando especial atención en prevenir factores ambientales que favorezcan el anidamiento y tránsito de estas plagas.")
+    # Cierre
+    cierre = "Mantendremos el seguimiento exhaustivo de todos los anillos de seguridad para prevenir incursiones externas y garantizar la inocuidad de las instalaciones."
     
-    return clean_text(" ".join(partes))
+    full_text = f"{encabezado}\n\n{' '.join(cuerpo_partes)}\n\n{cierre}"
+    return clean_text(full_text)
 
 
 def _generar_borrador_resumen_voladores(
@@ -93,70 +90,89 @@ def _generar_borrador_resumen_voladores(
     capturas_uv: list,
     especies: List[str],
 ) -> str:
-    """Genera un borrador automático del resumen de voladores."""
-    partes = []
+    """Genera un borrador estructurado del resumen de voladores."""
     n_visitas = len(observaciones)
     
-    if n_visitas == 0 and not capturas_uv:
-        return "No se realizaron inspecciones ni mantenimiento de equipos UV, ni se reportaron monitoreos de voladores en el transcurso de este mes."
-        
+    # Encabezado
+    encabezado = "Se ejecutó el plan de monitoreo y control de insectos voladores mediante la revisión y mantenimiento de las trampas de luz UV instaladas en sectores estratégicos."
+    
+    # Cuerpo
+    cuerpo_partes = []
     if n_visitas > 0:
-        partes.append(f"Durante la frecuencia establecida se llevaron a cabo inspecciones a los equipos UV instalados ({n_visitas} visitas de control).")
-        partes.append("Se verificó la vida útil de los tubos y se efectuaron los recambios de placas adhesivas que ya presentaban saturación o pérdida de adherencia.")
+        cuerpo_partes.append(f"Se realizaron {n_visitas} inspecciones técnicas durante el mes.")
     
     if capturas_uv:
-        partes.append("El conteo de capturas evidencia actividad en las zonas monitoreadas, lo cual es normal considerando la dinámica estacional e instalaciones operativas.")
+        cuerpo_partes.append("El conteo de capturas muestra actividad insectil dentro de los parámetros esperables para la época y el rubro.")
         if especies:
-            partes.append(f"Se identificaron principalmente individuos del tipo {format_list_es(especies)}.")
-        partes.append("Para mantener la bioseguridad del sector, sugerimos encarecidamente revisar cerramientos, mallas mosquiteras y asegurar el bloqueo de ingresos de luz desde el exterior durante la noche.")
+            cuerpo_partes.append(f"Se identificó presencia de {format_list_es(especies)}.")
+        cuerpo_partes.append("Se procedió al recambio de láminas adhesivas saturadas y a la limpieza de las unidades para garantizar la máxima capacidad de atracción.")
     else:
-        partes.append("En revisión de placas no se evidenciaron saturaciones o indicios extraordinarios que requieran acciones más drásticas.")
-        
-    return clean_text(" ".join(partes))
+        cuerpo_partes.append("No se registraron niveles críticos de capturas en los equipos, confirmando la efectividad de las medidas de exclusión actuales.")
+
+    # Cierre
+    cierre = "Se recomienda mantener el cierre de puertas y asegurar la hermeticidad de las mallas mosquiteras para minimizar el ingreso de individuos desde el exterior."
+    
+    full_text = f"{encabezado}\n\n{' '.join(cuerpo_partes)}\n\n{cierre}"
+    return clean_text(full_text)
 
 
 def _generar_borrador_resumen_rastreros(aplicaciones: List[dict]) -> str:
-    """Genera un borrador automático del resumen de rastreros."""
-    partes = []
-    
+    """Genera un borrador estructurado del resumen de rastreros."""
     n_apps = len(aplicaciones)
-    if n_apps == 0:
-        return "Conforme al cronograma, este mes no se requirieron aplicaciones sistemáticas de desinsectación para el control de rastreros, manteniéndose activo el efecto residual previo."
     
-    productos_usados = list({a.get("producto", "") for a in aplicaciones if a.get("producto")})
-    prod_str = format_list_es(productos_usados) if productos_usados else 'los productos insecticidas indicados'
+    # Encabezado
+    encabezado = "Se llevaron a cabo aplicaciones de desinsectación orientadas a mantener el control sobre insectos rastreros y arácnidos en áreas críticas y comunes."
     
-    if n_apps == 1:
-        accion = "Se concretó un servicio operativo preventivo/curativo enfocado al control de arrastreros"
+    # Cuerpo
+    cuerpo_partes = []
+    if n_apps > 0:
+        sectores = list({a.get("sectores_tratados", "") for a in aplicaciones if a.get("sectores_tratados")})
+        productos = list({a.get("producto", "") for a in aplicaciones if a.get("producto")})
+        cuerpo_partes.append(f"Se concretaron {n_apps} aplicaciones químicas en {format_list_es(sectores)}.")
+        if productos:
+            cuerpo_partes.append(f"Se utilizaron productos de amplio espectro residual: {format_list_es(productos)}.")
+        cuerpo_partes.append("Las tareas se enfocaron en puntos de anidamiento y vías de tránsito identificadas durante las inspecciones previas.")
     else:
-        accion = f"Se desarrollaron {n_apps} maniobras operativas destinadas a fortalecer la barrera química residual"
+        cuerpo_partes.append("No fue necesaria la aplicación de refuerzos químicos extraordinarios durante este periodo, manteniéndose el control preventivo mediante las barreras residuales existentes.")
 
-    sectores = list({a.get("sectores_tratados", "") for a in aplicaciones if a.get("sectores_tratados")})
+    # Cierre
+    cierre = "Estas acciones reafirman el compromiso con la higiene ambiental, evitando la proliferación de plagas que pudieran comprometer la operatividad."
     
-    # Redacción ajustada para evitar inyecciones de texto crudo kilométrico de los técnicos
-    partes.append(f"{accion}. Para estos fines, se utilizaron los productos: {prod_str}.")
-    partes.append("Las tareas se desarrollaron sobre las zonas críticas y los sectores acordados previamente en el cronograma de servicios.")
-        
-    partes.append("Los trabajos abordados transcurrieron de forma habitual, sin novedades que impidan el correcto desarrollo de la aplicación. De esta manera brindamos un contundente control para evitar el establecimiento biológico de plagas.")
-    
-    return clean_text(" ".join(partes))
+    full_text = f"{encabezado}\n\n{' '.join(cuerpo_partes)}\n\n{cierre}"
+    return clean_text(full_text)
 
 
 def _generar_borrador_conclusion(
     mes: str,
     anio: int,
-    resumen_roedores: str,
-    resumen_voladores: str,
-    resumen_rastreros: str,
+    consumo_tot: float,
+    n_desvios_roedores: int,
+    n_desvios_voladores: int,
+    n_desvios_rastreros: int,
+    n_desvios_otros: int,
 ) -> str:
-    """Genera un borrador de la conclusión general."""
-    return (
-        f"Durante {mes} {anio}, los tratamientos perimetrales, controles de roedores y "
-        "monitoreos de insectos voladores se desarrollaron según lo planificado, "
-        "manteniendo la cobertura preventiva en todos los sectores.\n\n"
-        "Los resultados de los relevamientos mensuales evidencian el correcto funcionamiento "
-        "del programa de Manejo Integrado de Plagas (MIP), con acciones preventivas y correctivas "
-        "implementadas oportunamente.\n\n"
+    """Genera un borrador de la conclusión general basada en los datos del mes."""
+    encabezado = f"Durante {mes} {anio}, el programa de Manejo Integrado de Plagas (MIP) se desarrolló cumpliendo con las frecuencias y metodologías planificadas."
+    
+    # Roedores
+    if consumo_tot > 0:
+        txt_roedores = f"En el control de roedores, se registró actividad con un consumo acumulado de {consumo_tot:g}g, procediendo al refuerzo de los puntos críticos."
+    else:
+        txt_roedores = "El control de roedores se mantuvo estable sin registros de consumos significativos en los anillos de seguridad."
+    
+    # Hallazgos / Desvíos
+    total_desvios = n_desvios_roedores + n_desvios_voladores + n_desvios_rastreros + n_desvios_otros
+    if total_desvios > 0:
+        detalles = []
+        if n_desvios_roedores > 0: detalles.append(f"{n_desvios_roedores} en roedores")
+        if n_desvios_voladores > 0: detalles.append(f"{n_desvios_voladores} en voladores")
+        if n_desvios_rastreros > 0: detalles.append(f"{n_desvios_rastreros} en rastreros")
+        if n_desvios_otros > 0: detalles.append(f"{n_desvios_otros} estructurales/otros")
+        txt_desvios = f"Se detectaron un total de {total_desvios} oportunidades de mejora ({', '.join(detalles)}), las cuales requieren atención para optimizar la hermeticidad y bioseguridad del predio."
+    else:
+        txt_desvios = "No se detectaron desvíos estructurales graves, recomendando mantener las condiciones actuales de orden y limpieza."
+
+    cierre = (
         "**Recomendaciones de Exclusión e Higiene:**\n"
         "Se recomienda mantener el orden y la limpieza en todos los sectores, evitar la acumulación "
         "de materiales e insumos en exteriores, y revisar periódicamente los accesos a interiores "
@@ -164,6 +180,9 @@ def _generar_borrador_conclusion(
         "Todas las oportunidades de mejora, relevamientos mediante imágenes, así como las Hojas de "
         "Seguridad (HDS) y Certificados de los productos utilizados, se encuentran disponibles en el portal web."
     )
+
+    cuerpo = f"{encabezado}\n\n{txt_roedores} {txt_desvios}\n\n{cierre}"
+    return cuerpo
 
 
 def consolidar_datos(
@@ -473,9 +492,11 @@ def consolidar_datos(
     informe_data.conclusion_general = _generar_borrador_conclusion(
         mes=informe_data.mes or "el mes",
         anio=informe_data.anio or 2026,
-        resumen_roedores=informe_data.resumen_roedores,
-        resumen_voladores=informe_data.resumen_voladores,
-        resumen_rastreros=informe_data.resumen_rastreros,
+        consumo_tot=sum(consumos_por_sector.values()),
+        n_desvios_roedores=len(desvios_roedores),
+        n_desvios_voladores=len(desvios_voladores),
+        n_desvios_rastreros=len(desvios_rastreros),
+        n_desvios_otros=len(desvios_otros),
     )
 
     return informe_data
