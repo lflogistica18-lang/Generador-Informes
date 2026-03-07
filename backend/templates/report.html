@@ -418,6 +418,30 @@
 
         {% endif %}
 
+        {% if desvios_voladores %}
+        <div class="subsection-header">Oportunidades de Mejora — Voladores</div>
+        <table class="photo-grid-table">
+            {% set ns_v = namespace(col=0) %}
+            {% for foto in desvios_voladores %}
+            {% if ns_v.col == 0 %}<tr>{% endif %}
+                <td class="photo-item">
+                    {% if foto.imagen_base64 %}
+                    <img src="{{ foto.imagen_base64 }}" class="photo-img" alt="Foto desvío">
+                    {% endif %}
+                    <div class="photo-caption">
+                        <span class="photo-caption-sector">{{ foto.sector or 'Sin sector' }}</span>
+                        <span class="photo-caption-accion">→ {{ foto.descripcion or 'Sin descripción' }}</span>
+                    </div>
+                </td>
+                {% set ns_v.col = ns_v.col + 1 %}
+                {% if ns_v.col == 2 %}
+            </tr>{% set ns_v.col = 0 %}{% endif %}
+            {% endfor %}
+            {% if ns_v.col == 1 %}<td></td>
+            </tr>{% endif %}
+        </table>
+        {% endif %}
+
         <div class="subsection-header">Resumen de Tratamiento</div>
         <div class="summary-text">{{ resumen_voladores }}</div>
     </div>
@@ -452,9 +476,63 @@
             </tbody>
         </table>
 
+        {% if desvios_rastreros %}
+        <div class="subsection-header">Oportunidades de Mejora — Rastreros</div>
+        <table class="photo-grid-table">
+            {% set ns_r = namespace(col=0) %}
+            {% for foto in desvios_rastreros %}
+            {% if ns_r.col == 0 %}<tr>{% endif %}
+                <td class="photo-item">
+                    {% if foto.imagen_base64 %}
+                    <img src="{{ foto.imagen_base64 }}" class="photo-img" alt="Foto desvío">
+                    {% endif %}
+                    <div class="photo-caption">
+                        <span class="photo-caption-sector">{{ foto.sector or 'Sin sector' }}</span>
+                        <span class="photo-caption-accion">→ {{ foto.descripcion or 'Sin descripción' }}</span>
+                    </div>
+                </td>
+                {% set ns_r.col = ns_r.col + 1 %}
+                {% if ns_r.col == 2 %}
+            </tr>{% set ns_r.col = 0 %}{% endif %}
+            {% endfor %}
+            {% if ns_r.col == 1 %}<td></td>
+            </tr>{% endif %}
+        </table>
+        {% endif %}
+
         <div class="subsection-header">Resumen de Tratamiento</div>
         <div class="summary-text">{{ resumen_rastreros }}</div>
     </div>
+
+    <!-- SECCIÓN OTRAS PLAGAS / INCIDENCIAS -->
+    {% if desvios_otros %}
+    <div class="section">
+        <div class="section-header">Otras Plagas / Incidencias Generales</div>
+        <p>A continuación se detallan hallazgos relacionados a otras plagas (como aves/palomas) o cuestiones
+            estructurales generales detectadas durante el servicio.</p>
+
+        <table class="photo-grid-table">
+            {% set ns_o = namespace(col=0) %}
+            {% for foto in desvios_otros %}
+            {% if ns_o.col == 0 %}<tr>{% endif %}
+                <td class="photo-item">
+                    {% if foto.imagen_base64 %}
+                    <img src="{{ foto.imagen_base64 }}" class="photo-img" alt="Foto desvío">
+                    {% endif %}
+                    <div class="photo-caption">
+                        <span class="photo-caption-sector">{{ foto.sector or 'Sin sector' }}</span>
+                        <span class="photo-caption-accion">→ {{ foto.descripcion or 'Sin descripción' }}</span>
+                    </div>
+                </td>
+                {% set ns_o.col = ns_o.col + 1 %}
+                {% if ns_o.col == 2 %}
+            </tr>{% set ns_o.col = 0 %}{% endif %}
+            {% endfor %}
+            {% if ns_o.col == 1 %}<td></td>
+            </tr>{% endif %}
+        </table>
+    </div>
+    {% endif %}
 
     <!-- CONCLUSIÓN -->
     <div class="section">

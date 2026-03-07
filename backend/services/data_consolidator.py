@@ -192,6 +192,10 @@ def consolidar_datos(
     capturas_cebaderas: Dict[str, dict] = {}
     reposiciones_por_tipo: Dict[str, int] = {}
     productos_roedores: set = set()
+    desvios_roedores = []
+    desvios_voladores = []
+    desvios_rastreros = []
+    desvios_otros = []
     campos_faltantes = []
 
     for conforme in conformes:
@@ -240,10 +244,17 @@ def consolidar_datos(
                  "capturas": capturas_cebaderas.get("Intermedio", {}).get("capturas", 0) + r.capturas
              }
         
-        # Desvíos fotográficos de roedores
+        # Desvíos fotográficos clasificados
         for d in conforme.desvios:
-            if d.tipo_plaga == "roedores":
+            tp = (d.tipo_plaga or "").lower()
+            if tp == "roedores":
                 desvios_roedores.append(d)
+            elif tp == "voladores":
+                desvios_voladores.append(d)
+            elif tp == "rastreros":
+                desvios_rastreros.append(d)
+            else:
+                desvios_otros.append(d)
 
     # Consolidar datos de los MIPs
     for mip in mips:
@@ -330,23 +341,14 @@ def consolidar_datos(
 
     # ── Consolidar datos de VOLADORES ─────────────────────────────────────────
     observaciones_voladores = []
-    desvios_voladores = []
-
     for conforme in conformes:
         v = conforme.voladores
-        if not v:
+        if not v or (v.modo and v.modo.lower() == "no realizado"):
             continue
-        if v.modo and v.modo.lower() == "no realizado":
-            continue
-        
         observaciones_voladores.append({
             "fecha": conforme.fecha or "Sin fecha",
-            "observaciones": v.comentarios or "",
+            "observaciones": v.comentarios or "Sin observaciones registradas.",
         })
-        
-        for d in conforme.desvios:
-            if d.tipo_plaga == "voladores":
-                desvios_voladores.append(d)
 
     informe_data.observaciones_voladores = observaciones_voladores
     informe_data.desvios_voladores = desvios_voladores
@@ -392,12 +394,10 @@ def consolidar_datos(
         
         aplicaciones_rastreros.append(aplicacion)
         
-        for d in conforme.desvios:
-            if d.tipo_plaga == "rastreros":
-                desvios_rastreros.append(d)
-
     informe_data.aplicaciones_rastreros = aplicaciones_rastreros
     informe_data.desvios_rastreros = desvios_rastreros
+    # Nuevo campo para desvíos de 'otros' (ej: palomas)
+    informe_data.desvios_otros = desvios_otros
     informe_data.campos_faltantes = campos_faltantes
 
     # ── Agregar campos faltantes de conformes ─────────────────────────────────

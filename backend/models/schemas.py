@@ -201,6 +201,9 @@ class InformeData(BaseModel):
     aplicaciones_rastreros: List[dict] = []
     desvios_rastreros: List[DesvioFotografico] = []
 
+    # Otras plagas / Incidencias generales
+    desvios_otros: List[DesvioFotografico] = []
+
     # Resúmenes (editables por el usuario)
     resumen_roedores: Optional[str] = None
     resumen_voladores: Optional[str] = None
