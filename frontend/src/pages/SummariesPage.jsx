@@ -1,6 +1,7 @@
 import React from 'react';
 import { useReportStore } from '../store/useReportStore';
 import { ChevronRight, ChevronLeft, FileText, ClipboardList } from 'lucide-react';
+import api from '../services/api';
 
 const SummariesPage = () => {
     const setStep = useReportStore((state) => state.setStep);
@@ -14,14 +15,9 @@ const SummariesPage = () => {
     React.useEffect(() => {
         const refreshCharts = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/reports/update-charts', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(informeData)
-                });
-                if (response.ok) {
-                    const updatedData = await response.json();
-                    setInformeData(updatedData);
+                const response = await api.post('reports/update-charts', informeData);
+                if (response.data) {
+                    setInformeData(response.data);
                 }
             } catch (err) {
                 console.error("Error refreshing charts:", err);
@@ -29,6 +25,7 @@ const SummariesPage = () => {
         };
         refreshCharts();
     }, []);
+
 
     const handleNext = () => {
         setStep('preview');
