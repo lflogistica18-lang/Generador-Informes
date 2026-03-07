@@ -25,6 +25,7 @@ const ReviewPage = () => {
                 informe_base: {
                     cliente_nombre: cliente?.nombre,
                     sucursal_nombre: sucursal?.nombre,
+                    sucursal_direccion: sucursal?.direccion,
                     mes: mes,
                     anio: anio
                 }

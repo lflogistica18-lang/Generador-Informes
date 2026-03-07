@@ -56,6 +56,18 @@ async def generate_pdf(informe_data: dict):
     """Genera el Informe MIP Mensual en formato PDF."""
     try:
         informe = InformeData(**informe_data)
+        
+        # Safety: Recalcular estaciones dinámicamente según configuración
+        if informe.configuracion_roedores and informe.configuracion_roedores.get("sectores"):
+            tot_cb = 0
+            tot_pg = 0
+            for sec in informe.configuracion_roedores["sectores"]:
+                tot_cb += int(sec.get("cantidad_cb") or 0)
+                tot_pg += int(sec.get("cantidad_pg") or 0)
+            
+            informe.estaciones_perimetro_externo = tot_cb
+            informe.estaciones_perimetro_interno = tot_pg
+
         filepath = generate_pdf_report(informe)
         
         if os.path.exists(filepath):

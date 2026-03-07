@@ -44,19 +44,13 @@ const RoedoresConfigPage = () => {
     };
 
     const handleNext = () => {
-        // Calcular totales para los datos generales del informe
-        const totalExterno = sectores
-            .filter(s => s.nombre.toLowerCase().includes('externo'))
-            .reduce((acc, s) => acc + s.cantidad_cb + s.cantidad_pg, 0);
-        
-        const totalInterno = sectores
-            .filter(s => s.nombre.toLowerCase().includes('interno'))
-            .reduce((acc, s) => acc + s.cantidad_cb + s.cantidad_pg, 0);
-
+        // Calcular totales estrictos por tipo de dispositivo
+        const totalCB = sectores.reduce((acc, s) => acc + (parseInt(s.cantidad_cb) || 0), 0);
+        const totalPG = sectores.reduce((acc, s) => acc + (parseInt(s.cantidad_pg) || 0), 0);
         setInformeData({
             ...informeData,
-            estaciones_perimetro_externo: totalExterno,
-            estaciones_perimetro_interno: totalInterno,
+            estaciones_perimetro_externo: totalCB,
+            estaciones_perimetro_interno: totalPG,
             configuracion_roedores: {
                 sectores: sectores,
                 ultima_actualizacion: new Date().toISOString()
@@ -142,7 +136,7 @@ const RoedoresConfigPage = () => {
                                     {sectores.map((s, idx) => (
                                         <tr key={idx} className="hover:bg-primary-50 border-b border-primary-50">
                                             <td className="p-3 font-semibold text-primary-800">
-                                                <input 
+                                                <input
                                                     type="text"
                                                     value={s.nombre}
                                                     onChange={(e) => {

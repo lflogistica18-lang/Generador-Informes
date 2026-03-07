@@ -13,7 +13,7 @@ const SelectClientPage = () => {
     const [sucursalSel, setSucursalSel] = useState('');
     const [mes, setMes] = useState(new Date().getMonth() + 1); // 1-12
     const [anio, setAnio] = useState(new Date().getFullYear());
-
+    const [direccionSel, setDireccionSel] = useState('');
     // Mock data (luego vendrá del backend)
     const clientes = [
         { id: '1', nombre: 'CALSA', sucursales: [{ id: 's1', nombre: 'Planta 4' }, { id: 's2', nombre: 'Planta 1' }] },
@@ -35,7 +35,8 @@ const SelectClientPage = () => {
 
         const sucursalObj = {
             id: `suc-${Date.now()}`,
-            nombre: sucursalSel
+            nombre: sucursalSel,
+            direccion: direccionSel
         };
 
         setCliente(clienteObj);
@@ -108,6 +109,13 @@ const SelectClientPage = () => {
                             placeholder="Nombre de la Sucursal o Planta"
                             value={sucursalSel}
                             onChange={(e) => setSucursalSel(e.target.value)}
+                        />
+                        <input
+                            type="text"
+                            className="input-field mt-2"
+                            placeholder="Dirección de la Planta / Sucursal"
+                            value={direccionSel}
+                            onChange={(e) => setDireccionSel(e.target.value)}
                         />
                     </div>
                 </div>
