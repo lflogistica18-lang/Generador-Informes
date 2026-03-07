@@ -355,17 +355,11 @@ def _parse_relevamiento(pdf_plumber, paginas: list) -> List[PuntoRelevamiento]:
 def parsear_mip(filepath: str) -> ParsedMIP:
     """
     Parsea un PDF MIP de roedores y retorna un objeto ParsedMIP.
-    
-    Estructura:
-    - Pág 1: Dashboard + Productos + Comentarios
-    - Pág 2: Tabla Consumos + (posible: Tabla Capturas)  
-    - Pág 3: Tabla Reposiciones
-    - Págs 4-6: Tabla Relevamiento Original
-    - Pág 7: Firma
+    Detección dinámica de tablas por contenido.
     """
     mip = ParsedMIP()
     
-    # ── Texto plano para metadata ──────────────────────────────────────────────
+    # ── Texto plano para metadata (Página 1) ───────────────────────────────────
     doc = fitz.open(filepath)
     texto_pag1 = doc[0].get_text() if len(doc) > 0 else ""
     
@@ -400,24 +394,107 @@ def parsear_mip(filepath: str) -> ParsedMIP:
     
     doc.close()
     
-    # ── Tablas con pdfplumber ──────────────────────────────────────────────────
+    # ── Tablas con pdfplumber (Detección Dinámica) ──────────────────────────────
     with pdfplumber.open(filepath) as pdf:
-        num_paginas = len(pdf.pages)
+        consumos_vistos = 0
         
-        # Pág 2 (índice 1): Consumos y posibles Capturas
-        if num_paginas >= 2:
-            mip.consumos = _parse_tabla_consumos(pdf, 1)
-            mip.capturas = _parse_tabla_capturas(pdf, 1)
-        
-        # Pág 3 (índice 2): Reposiciones
-        if num_paginas >= 3:
-            mip.reposiciones = _parse_tabla_reposiciones(pdf, 2)
-        
-        # Págs 4-6 (índices 3-5): Relevamiento Original
-        paginas_relevamiento = list(range(3, min(7, num_paginas - 1)))  # excluye última (firma)
-        if paginas_relevamiento:
-            mip.relevamiento = _parse_relevamiento(pdf, paginas_relevamiento)
-    
+        # Saltamos página 1 (dashboard) y la última (habitualmente firma)
+        for i in range(1, len(pdf.pages) - 1):
+            page = pdf.pages[i]
+            tables = page.extract_tables()
+            
+            for table in tables:
+                if not table or not table[0]:
+                    continue
+                
+                # Obtener el header normalizado (mayúsculas)
+                header = [str(h).upper() if h else '' for h in table[0]]
+                header_str = " ".join(header)
+                
+                # 1. ¿Es Relevamiento Original? (10 columnas principales)
+                if "ESTADO" in header_str and "HERRAMIENTA" in header_str:
+                    # En lugar de una función que toma el índice de página, 
+                    # adaptamos _parse_relevamiento o procesamos la tabla aquí
+                    filas_limpias = _limpiar_filas_tabla(table[1:])
+                    subseccion_actual = None
+                    
+                    for fila in filas_limpias:
+                        if len(fila) < 8: continue
+                        
+                        if fila[0] and str(fila[0]).strip() and str(fila[0]).strip() not in ['-', '']:
+                            subseccion_actual = str(fila[0]).strip()
+                        
+                        # Extraer datos según layout
+                        codigo = str(fila[1]).strip() if fila[1] else None
+                        if not codigo or not re.match(r'^[Cc][Bb]\s*\.?\d+$', str(codigo)):
+                            continue
+                            
+                        punto = PuntoRelevamiento(
+                            subseccion=subseccion_actual,
+                            codigo=codigo,
+                            herramienta=str(fila[2]).strip() if len(fila) > 2 else None,
+                            estado=str(fila[3]).strip() if len(fila) > 3 else None,
+                            consumos=_parse_float(fila[4]) if len(fila) > 4 else 0,
+                            capturas=int(str(fila[5]).strip()) if len(fila) > 5 and str(fila[5]).strip().isdigit() else 0,
+                            reposiciones=int(str(fila[6]).strip()) if len(fila) > 6 and str(fila[6]).strip().isdigit() else 0,
+                            tipo_reposicion=str(fila[7]).strip() if len(fila) > 7 and fila[7] != '-' else None,
+                            operario=str(fila[8]).strip() if len(fila) > 8 else None,
+                            comentario=str(fila[9]).strip() if len(fila) > 9 and fila[9] != '-' else None,
+                        )
+                        mip.relevamiento.append(punto)
+                
+                # 2. ¿Es Reposiciones?
+                elif "TIPO" in header_str and "CANTIDAD" in header_str:
+                    for fila in table[1:]:
+                        if not fila or sum(1 for c in fila if c is not None) < 3: continue
+                        try:
+                            repos = RegistroReposicion(
+                                id=str(fila[0]).strip() if fila[0] else None,
+                                operario=str(fila[1]).strip() if len(fila) > 1 else None,
+                                insumo=str(fila[2]).strip() if len(fila) > 2 else None,
+                                tipo=str(fila[3]).strip() if len(fila) > 3 else None,
+                                punto_control=str(fila[4]).strip() if len(fila) > 4 else None,
+                                cantidad=int(str(fila[5]).strip()) if len(fila) > 5 and str(fila[5]).strip().isdigit() else None,
+                                fecha=str(fila[6]).strip() if len(fila) > 6 else None,
+                                comentario=str(fila[7]).strip() if len(fila) > 7 else None,
+                            )
+                            mip.reposiciones.append(repos)
+                        except: continue
+                
+                # 3. ¿Es Consumos o Capturas? (Tienen el mismo header de 7 columnas)
+                elif "PUNTO CONTROL" in header_str and "ID" in header_str:
+                    consumos_vistos += 1
+                    if consumos_vistos == 1: # Primera tabla de este tipo es Consumos
+                        for fila in table[1:]:
+                            if not fila or sum(1 for c in fila if c is not None) < 3: continue
+                            try:
+                                consumo = RegistroConsumo(
+                                    id=str(fila[0]).strip() if fila[0] else None,
+                                    operario=str(fila[1]).strip() if len(fila) > 1 else None,
+                                    insumo=str(fila[2]).strip() if len(fila) > 2 else None,
+                                    punto_control=str(fila[3]).strip() if len(fila) > 3 else None,
+                                    cantidad=_parse_float(fila[4]) if len(fila) > 4 else None,
+                                    fecha=str(fila[5]).strip() if len(fila) > 5 else None,
+                                    comentario=str(fila[6]).strip() if len(fila) > 6 else None,
+                                )
+                                mip.consumos.append(consumo)
+                            except: continue
+                    else: # Segunda tabla de este tipo suele ser Capturas
+                        for fila in table[1:]:
+                            if not fila or sum(1 for c in fila if c is not None) < 3: continue
+                            try:
+                                captura = RegistroCaptura(
+                                    id=str(fila[0]).strip() if fila[0] else None,
+                                    operario=str(fila[1]).strip() if len(fila) > 1 else None,
+                                    insumo=str(fila[2]).strip() if len(fila) > 2 else None,
+                                    punto_control=str(fila[3]).strip() if len(fila) > 3 else None,
+                                    cantidad=int(str(fila[4]).strip()) if len(fila) > 4 and str(fila[4]).strip().isdigit() else None,
+                                    fecha=str(fila[5]).strip() if len(fila) > 5 else None,
+                                    comentario=str(fila[6]).strip() if len(fila) > 6 else None,
+                                )
+                                mip.capturas.append(captura)
+                            except: continue
+                            
     return mip
 
 
@@ -430,3 +507,4 @@ def es_mip(filepath: str) -> bool:
         return "Resumen MIP" in texto or "Dashboard de Actividad MIP" in texto
     except Exception:
         return False
+
